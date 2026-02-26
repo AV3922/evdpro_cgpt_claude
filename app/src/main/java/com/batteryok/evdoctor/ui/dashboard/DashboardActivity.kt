@@ -105,8 +105,8 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun setupLineChart(chart: LineChart, color: Int, label: String) {
         val isDark = ThemeUtils.isDarkMode(this)
-        val textColor = if (isDark) Color.parseColor("#9898B8") else Color.parseColor("#5A5A7A")
-        val gridColor = if (isDark) Color.parseColor("#2A2A40") else Color.parseColor("#E8EAFF")
+        val axisTextColor = if (isDark) Color.parseColor("#9898B8") else Color.parseColor("#5A5A7A")
+        val axisGridColor = if (isDark) Color.parseColor("#2A2A40") else Color.parseColor("#E8EAFF")
         val bgColor = if (isDark) Color.parseColor("#1A1A2E") else Color.WHITE
 
         chart.apply {
@@ -117,13 +117,13 @@ class DashboardActivity : AppCompatActivity() {
             setPinchZoom(false)
             setBackgroundColor(bgColor)
             setNoDataText("Waiting for data…")
-            setNoDataTextColor(textColor)
+            setNoDataTextColor(axisTextColor)
 
             xAxis.apply {
                 position = XAxis.XAxisPosition.BOTTOM
                 setDrawGridLines(true)
-                gridColor = gridColor
-                textColor = textColor
+                gridColor = axisGridColor
+                textColor = axisTextColor
                 textSize = 10f
                 setAvoidFirstLastClipping(true)
                 granularity = 1f
@@ -134,8 +134,8 @@ class DashboardActivity : AppCompatActivity() {
 
             axisLeft.apply {
                 setDrawGridLines(true)
-                this.gridColor = gridColor
-                this.textColor = textColor
+                this.gridColor = axisGridColor
+                this.textColor = axisTextColor
                 textSize = 10f
             }
 
@@ -169,7 +169,7 @@ class DashboardActivity : AppCompatActivity() {
             connectToDevice(device)
         }
 
-        binding.rvBluetoothDevices.apply {
+        binding.bluetoothSheetContainer.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.rvBluetoothDevices).apply {
             layoutManager = LinearLayoutManager(this@DashboardActivity)
             adapter = btAdapter
         }
@@ -179,7 +179,7 @@ class DashboardActivity : AppCompatActivity() {
             loadPairedDevices()
         }
 
-        binding.btnScanBluetooth.setOnClickListener {
+        binding.bluetoothSheetContainer.findViewById<View>(R.id.btnScanBluetooth).setOnClickListener {
             if (hasBluetoothPermissions()) {
                 scanForDevices()
             } else {
@@ -197,20 +197,20 @@ class DashboardActivity : AppCompatActivity() {
         val paired = BluetoothUtils.getPairedDevices(this)
         if (paired.isNotEmpty()) {
             btAdapter.updateDevices(paired.toList())
-            binding.layoutNoDevices.visibility = View.GONE
+            binding.bluetoothSheetContainer.findViewById<View>(R.id.layoutNoDevices).visibility = View.GONE
         }
     }
 
     private fun scanForDevices() {
-        binding.btScanProgress.visibility = View.VISIBLE
-        binding.layoutNoDevices.visibility = View.GONE
+        binding.bluetoothSheetContainer.findViewById<View>(R.id.btScanProgress).visibility = View.VISIBLE
+        binding.bluetoothSheetContainer.findViewById<View>(R.id.layoutNoDevices).visibility = View.GONE
 
         // Simulate device scan - in production, use BluetoothLeScanner
         handler.postDelayed({
-            binding.btScanProgress.visibility = View.GONE
+            binding.bluetoothSheetContainer.findViewById<View>(R.id.btScanProgress).visibility = View.GONE
             loadPairedDevices()
             if (btAdapter.itemCount == 0) {
-                binding.layoutNoDevices.visibility = View.VISIBLE
+                binding.bluetoothSheetContainer.findViewById<View>(R.id.layoutNoDevices).visibility = View.VISIBLE
             }
         }, 2000)
     }
