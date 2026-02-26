@@ -51,6 +51,8 @@ class DashboardActivity : AppCompatActivity() {
     private var elapsedTime = 0L
     private var isPaused = false
     private var isStopped = false
+    private var isTestRunning = false
+    private var isBluetoothConnected = false
 
     private val maxDataPoints = 30
 
@@ -74,7 +76,8 @@ class DashboardActivity : AppCompatActivity() {
         setupCharts()
         setupBluetoothSheet()
         setupClickListeners()
-        startTest()
+        binding.btnPauseResume.text = "START"
+        binding.liveIndicator.visibility = View.GONE
     }
 
     private fun setupToolbar() {
@@ -217,13 +220,16 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun connectToDevice(device: BluetoothDevice) {
         try {
-            val deviceName = if (hasBluetoothPermissions()) device.name ?: "Device" else "Device"
-            binding.tvBluetoothStatus.text = deviceName
+            if (hasBluetoothPermissions()) {
+                device.name
+            }
+            binding.tvBluetoothStatus.text = getString(R.string.bluetooth_connected)
             binding.tvBluetoothStatus.setTextColor(getColor(R.color.status_good))
             binding.ivBluetoothIcon.setImageResource(R.drawable.ic_bluetooth_connected)
             btAdapter.setConnectedDevice(device)
+            isBluetoothConnected = true
         } catch (e: SecurityException) {
-            binding.tvBluetoothStatus.text = "Connected"
+            binding.tvBluetoothStatus.text = getString(R.string.bluetooth_connected)
             binding.tvBluetoothStatus.setTextColor(getColor(R.color.status_good))
         }
         binding.bluetoothSheetContainer.visibility = View.GONE
@@ -243,7 +249,15 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         binding.btnPauseResume.setOnClickListener {
-            if (isPaused) resumeTest() else pauseTest()
+            if (!isTestRunning) {
+                if (isBluetoothConnected) {
+                    startTest()
+                } else {
+                    binding.tvBluetoothStatus.text = getString(R.string.bluetooth_disconnected)
+                    binding.tvBluetoothStatus.setTextColor(getColor(R.color.status_critical))
+                    showBluetoothSheet()
+                }
+            }
         }
 
         binding.btnStopTest.setOnClickListener {
@@ -284,12 +298,14 @@ class DashboardActivity : AppCompatActivity() {
         startTime = System.currentTimeMillis()
         isStopped = false
         isPaused = false
+        isTestRunning = true
 
         startTimer()
         startDataCollection()
 
         binding.liveIndicator.visibility = View.VISIBLE
-        binding.btnPauseResume.text = getString(R.string.pause_test)
+        binding.btnPauseResume.text = "START"
+        binding.btnPauseResume.isEnabled = false
     }
 
     private fun startTimer() {
@@ -331,7 +347,6 @@ class DashboardActivity : AppCompatActivity() {
         binding.tvPower.text = String.format("%.0f", reading.power)
         binding.tvResistance.text = String.format("%.1f", reading.internalResistance)
         binding.tvSocValue.text = String.format("%.0f", reading.soc)
-        binding.tvHealthScore.text = String.format("%.0f", reading.healthScore)
 
         // Update SOC progress
         binding.socProgressBar.progress = reading.soc.toInt()
@@ -363,23 +378,10 @@ class DashboardActivity : AppCompatActivity() {
         )
     }
 
-    private fun pauseTest() {
-        isPaused = true
-        binding.btnPauseResume.text = getString(R.string.resume_test)
-        binding.liveIndicator.visibility = View.INVISIBLE
-    }
-
-    private fun resumeTest() {
-        isPaused = false
-        startTime = System.currentTimeMillis() - elapsedTime
-        binding.btnPauseResume.text = getString(R.string.pause_test)
-        binding.liveIndicator.visibility = View.VISIBLE
-        startTimer()
-        startDataCollection()
-    }
 
     private fun stopTest() {
         isStopped = true
+        isTestRunning = false
         handler.removeCallbacksAndMessages(null)
         binding.liveIndicator.visibility = View.GONE
 
@@ -398,6 +400,7 @@ class DashboardActivity : AppCompatActivity() {
             .setMessage("The current test will be stopped and unsaved data will be lost.")
             .setPositiveButton("Exit") { _, _ ->
                 isStopped = true
+                isTestRunning = false
                 handler.removeCallbacksAndMessages(null)
                 finish()
             }
@@ -455,6 +458,7 @@ class DashboardActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         isStopped = true
+        isTestRunning = false
         handler.removeCallbacksAndMessages(null)
     }
 
