@@ -73,6 +73,7 @@
     <string name="resume_test">Resume</string>
     <string name="generate_report">Generate Report</string>
     <string name="bluetooth_connect">Bluetooth</string>
+    <string name="pair_device">Pair Device</string>
     <string name="bluetooth_scan">Scan Devices</string>
     <string name="bluetooth_connected">Connected</string>
     <string name="bluetooth_disconnected">Disconnected</string>
