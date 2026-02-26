@@ -21,7 +21,7 @@
     <string name="test_mode">Test Mode</string>
     <string name="client_name">Client Name</string>
     <string name="client_id">Client ID</string>
-    <string name="client_phone">Phone Number</string>
+    <string name="client_phone">Client Contact</string>
     <string name="client_email">Email Address</string>
     <string name="vehicle_model">Vehicle Model</string>
     <string name="vehicle_number">Vehicle Number</string>
