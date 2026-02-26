@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GradientButton">
+        <attr name="gradientStart" format="color" />
+        <attr name="gradientEnd" format="color" />
+        <attr name="gradientAngle" format="integer" />
+        <attr name="buttonText" format="string" />
+        <attr name="buttonCornerRadius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CircularProgressView">
+        <attr name="cpv_progress" format="float" />
+        <attr name="cpv_max" format="float" />
+        <attr name="cpv_strokeWidth" format="dimension" />
+        <attr name="cpv_progressColor" format="color" />
+        <attr name="cpv_backgroundColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="MetricCardView">
+        <attr name="mcv_title" format="string" />
+        <attr name="mcv_value" format="string" />
+        <attr name="mcv_unit" format="string" />
+        <attr name="mcv_icon" format="reference" />
+        <attr name="mcv_iconColor" format="color" />
+        <attr name="mcv_iconBg" format="color" />
+    </declare-styleable>
+</resources>

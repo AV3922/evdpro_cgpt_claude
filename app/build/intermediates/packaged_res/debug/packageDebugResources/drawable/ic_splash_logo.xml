@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Outer glow ring -->
+    <path
+        android:pathData="M54,10 C79.3,10 99.9,30.6 99.9,56 C99.9,81.3 79.3,102 54,102 C28.7,102 8,81.3 8,56 C8,30.6 28.7,10 54,10Z"
+        android:fillColor="#1A1A2E"
+        android:strokeColor="#4A6CF7"
+        android:strokeWidth="1.5"/>
+
+    <!-- Inner circle gradient bg -->
+    <path
+        android:pathData="M54,20 C73.8,20 89.9,36.1 89.9,56 C89.9,75.8 73.8,92 54,92 C34.2,92 18,75.8 18,56 C18,36.1 34.2,20 54,20Z"
+        android:fillColor="#151524"/>
+
+    <!-- Lightning bolt (battery energy symbol) -->
+    <path
+        android:pathData="M60,26 L40,58 L52,58 L46,84 L68,50 L56,50 L60,26Z"
+        android:fillColor="#4A6CF7"/>
+
+    <!-- Small accent dot -->
+    <path
+        android:pathData="M68,28 A4,4 0 1,1 76,28 A4,4 0 1,1 68,28Z"
+        android:fillColor="#7B5EA7"/>
+
+</vector>

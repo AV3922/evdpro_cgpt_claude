@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spacing -->
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+    <dimen name="spacing_xxl">48dp</dimen>
+
+    <!-- Corner Radii -->
+    <dimen name="corner_xs">4dp</dimen>
+    <dimen name="corner_sm">8dp</dimen>
+    <dimen name="corner_md">12dp</dimen>
+    <dimen name="corner_lg">16dp</dimen>
+    <dimen name="corner_xl">24dp</dimen>
+    <dimen name="corner_full">100dp</dimen>
+
+    <!-- Card -->
+    <dimen name="card_elevation">0dp</dimen>
+    <dimen name="card_padding">20dp</dimen>
+    <dimen name="card_margin">12dp</dimen>
+
+    <!-- Icons -->
+    <dimen name="icon_sm">16dp</dimen>
+    <dimen name="icon_md">24dp</dimen>
+    <dimen name="icon_lg">32dp</dimen>
+    <dimen name="icon_xl">48dp</dimen>
+    <dimen name="icon_xxl">64dp</dimen>
+
+    <!-- Metric Icon Container -->
+    <dimen name="metric_icon_container">48dp</dimen>
+    <dimen name="metric_icon_size">24dp</dimen>
+
+    <!-- Buttons -->
+    <dimen name="button_height">52dp</dimen>
+    <dimen name="button_height_sm">40dp</dimen>
+    <dimen name="button_corner">14dp</dimen>
+
+    <!-- Input -->
+    <dimen name="input_height">56dp</dimen>
+    <dimen name="input_corner">12dp</dimen>
+
+    <!-- Logo -->
+    <dimen name="splash_logo_size">100dp</dimen>
+    <dimen name="splash_icon_size">140dp</dimen>
+
+    <!-- Charts -->
+    <dimen name="chart_height">200dp</dimen>
+
+    <!-- Progress indicator -->
+    <dimen name="progress_stroke_width">8dp</dimen>
+    <dimen name="progress_size_sm">60dp</dimen>
+    <dimen name="progress_size_md">80dp</dimen>
+    <dimen name="progress_size_lg">120dp</dimen>
+
+    <!-- Status indicator -->
+    <dimen name="status_dot_size">8dp</dimen>
+
+    <!-- Screen padding -->
+    <dimen name="screen_padding">20dp</dimen>
+    <dimen name="screen_padding_top">12dp</dimen>
+
+    <!-- Bottom bar -->
+    <dimen name="bottom_nav_height">64dp</dimen>
+</resources>

@@ -1,0 +1,58 @@
+[
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/activity_report.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/activity_report.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/activity_home.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/layout_section_header_battery.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_section_header_battery.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/layout_param_card.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_param_card.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/layout_section_header_testmode.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_section_header_testmode.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/layout_bluetooth_sheet.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_bluetooth_sheet.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/layout_report_info_item.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_report_info_item.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/activity_dashboard.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/activity_dashboard.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/layout_safety_row.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_safety_row.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/layout_fault_item.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_fault_item.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/item_bluetooth_device.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/item_bluetooth_device.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/activity_splash.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/layout_section_header_vehicle.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_section_header_vehicle.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-mergeDebugResources-50:/layout/layout_section_header_client.xml",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_section_header_client.xml"
+    }
+]

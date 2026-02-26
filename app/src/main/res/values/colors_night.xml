@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Color overrides for accessing in night mode bottom sheet -->
+<resources>
+    <color name="surface_color">@color/dark_surface</color>
+</resources>

@@ -1,0 +1,378 @@
+[
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_activity_report.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/activity_report.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_mode_card_normal.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_mode_card_normal.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/color_input_stroke_selector.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/color/input_stroke_selector.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_button_outline_small.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_button_outline_small.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_soc.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_soc.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_ai_recommendation.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_ai_recommendation.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_icon_container_blue.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_icon_container_blue.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_graph.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_graph.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_activity_home.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_timer.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_timer.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_report.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_report.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_share.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_share.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_tag.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_tag.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_icon_container_green.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_icon_container_green.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_card_dark.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_card_dark.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_pause.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_pause.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_spinner.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_spinner.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_layout_report_info_item.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_report_info_item.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_status_safe.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_status_safe.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_timer.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_timer.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_capacity.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_capacity.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_icon_container_orange.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_icon_container_orange.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_orb_orange.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_orb_orange.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_button_outlined.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_button_outlined.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_section_header.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_section_header.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_layout_section_header_testmode.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_section_header_testmode.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_flash.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_flash.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_launcher.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_launcher.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_play.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_play.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_connectivity_checking.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_connectivity_checking.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_splash_logo.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_splash_logo.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_status_warning.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_status_warning.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_sheet_handle.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_sheet_handle.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_status_critical.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_status_critical.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/anim_slide_out_left.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/anim/slide_out_left.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_layout_fault_item.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_fault_item.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_power.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_power.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_check_circle.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_check_circle.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_voltage.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_voltage.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_temperature.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_temperature.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_mode_icon_normal.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_mode_icon_normal.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_layout_section_header_client.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_section_header_client.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_person.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_person.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/font_inter_regular.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/font/inter_regular.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_bluetooth.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_bluetooth.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_theme_toggle.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_theme_toggle.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_bottom_sheet.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_bottom_sheet.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_arrow_back.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_arrow_back.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_card_light.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_card_light.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_health.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_health.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_icon_container_purple.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_icon_container_purple.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_layout_safety_row.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_safety_row.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_launcher_round.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_splash.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_splash.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_bluetooth_connected.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_bluetooth_connected.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_live_indicator.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_live_indicator.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_orb_purple.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_orb_purple.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_wifi.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_wifi.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_mode_card_selected.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_mode_card_selected.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_layout_section_header_vehicle.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_section_header_vehicle.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/font_inter_medium.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/font/inter_medium.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_layout_bluetooth_sheet.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_bluetooth_sheet.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_layout_param_card.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_param_card.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_download.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_download.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_input_stroke_selector.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/input_stroke_selector.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_button_stop.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_button_stop.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_item_bluetooth_device.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/item_bluetooth_device.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_battery.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_battery.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_current.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_current.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_analytics.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_analytics.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_warning.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_warning.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_health_ring.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_health_ring.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_logo_ring.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_logo_ring.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_activity_splash.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_layout_section_header_battery.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/layout_section_header_battery.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_orb_blue.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_orb_blue.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_gradient_primary.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_gradient_primary.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/anim_slide_up.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/anim/slide_up.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_wifi_off.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_wifi_off.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/font_inter_bold.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/font/inter_bold.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_car.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_car.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_button_primary.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_button_primary.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/font_inter_semibold.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/font/inter_semibold.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/anim_fade_in.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/anim/fade_in.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_divider_gradient.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_divider_gradient.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/anim_slide_in_right.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/anim/slide_in_right.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_menu.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_menu.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_input_field.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_input_field.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_bg_mode_icon_flash.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/bg_mode_icon_flash.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_error.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_error.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_resistance.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_resistance.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/drawable_ic_stop.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/drawable/ic_stop.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/layout_activity_dashboard.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/layout/activity_dashboard.xml"
+    },
+    {
+        "merged": "com.batteryok.evdoctor.app-debug-51:/menu_menu_dashboard.xml.flat",
+        "source": "com.batteryok.evdoctor.app-main-53:/menu/menu_dashboard.xml"
+    }
+]

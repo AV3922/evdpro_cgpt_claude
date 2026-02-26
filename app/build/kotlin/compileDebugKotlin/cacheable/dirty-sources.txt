@@ -1,0 +1,13 @@
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/utils/BluetoothUtils.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/model/TestSession.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/utils/ThemeUtils.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/utils/NetworkUtils.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/model/BatteryInfo.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/ui/home/HomeActivity.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/model/BatteryReading.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/ui/report/ReportActivity.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/ui/splash/SplashActivity.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/ui/dashboard/DashboardActivity.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/utils/BatterySimulator.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/model/ClientInfo.kt
+/Users/av/Desktop/new_gen_EVD_androiod_app/claude_pro/claude_EVDPRO-claude-android-splash-screen-4pAyI/app/src/main/java/com/batteryok/evdoctor/adapter/BluetoothDeviceAdapter.kt

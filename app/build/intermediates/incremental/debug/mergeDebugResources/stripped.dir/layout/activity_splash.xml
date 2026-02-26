@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash">
+
+    <!-- Top decorative orb - blue -->
+    <View
+        android:id="@+id/orbTopRight"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_orb_blue"
+        android:alpha="0.15"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="-60dp"
+        android:layout_marginEnd="-60dp" />
+
+    <!-- Bottom decorative orb - purple -->
+    <View
+        android:id="@+id/orbBottomLeft"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="@drawable/bg_orb_purple"
+        android:alpha="0.12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="-40dp"
+        android:layout_marginStart="-40dp" />
+
+    <!-- Center Logo Group -->
+    <LinearLayout
+        android:id="@+id/logoGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:alpha="0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/connectivityCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Logo Circle -->
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center">
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/bg_logo_ring" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_splash_logo"
+                android:scaleType="fitCenter" />
+
+        </FrameLayout>
+
+        <!-- App Name -->
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EV DOCTOR"
+            android:textSize="32sp"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="#EEEEFF"
+            android:letterSpacing="0.08"
+            android:layout_marginTop="20dp" />
+
+        <!-- TM superscript + AI tag -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="™"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_regular"
+                android:textColor="#9898B8"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Powered by AI"
+                android:textSize="11sp"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="#FFFFFF"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:background="@drawable/bg_tag" />
+        </LinearLayout>
+
+        <!-- Company Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Battery Ok Technologies"
+            android:textSize="13sp"
+            android:fontFamily="@font/inter_regular"
+            android:textColor="#5A5A7A"
+            android:layout_marginTop="12dp" />
+
+    </LinearLayout>
+
+    <!-- Connectivity Status Card -->
+    <LinearLayout
+        android:id="@+id/connectivityCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:alpha="0"
+        android:padding="20dp"
+        android:background="@drawable/bg_connectivity_checking"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="120dp">
+
+        <!-- Status Icon Row -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/ivConnectivityIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_wifi"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tvConnectivityStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/checking_connection"
+                android:textSize="13sp"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="#EEEEFF" />
+        </LinearLayout>
+
+        <!-- Progress Bar -->
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressConnectivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:indicatorColor="#4A6CF7"
+            app:trackColor="#2A2A40"
+            app:trackCornerRadius="4dp"
+            android:indeterminate="true" />
+
+        <!-- Error Action Buttons (hidden by default) -->
+        <LinearLayout
+            android:id="@+id/layoutRetryActions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnContinueOffline"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/continue_offline"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="#9898B8"
+                android:background="@null"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnRetry"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/retry"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_semibold"
+                android:textColor="@color/brand_blue"
+                android:background="@drawable/bg_button_outline_small"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Version Number at Bottom -->
+    <TextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Version 1.0.0"
+        android:textSize="12sp"
+        android:fontFamily="@font/inter_regular"
+        android:textColor="#3A3A55"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="28dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

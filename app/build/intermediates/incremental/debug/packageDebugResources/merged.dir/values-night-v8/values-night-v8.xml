@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.EVDoctor" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand_blue_light</item>
+        <item name="colorPrimaryVariant">@color/brand_blue</item>
+        <item name="colorSecondary">@color/brand_purple_light</item>
+        <item name="colorSecondaryVariant">@color/brand_purple</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSurface">@color/dark_surface</item>
+        <item name="colorOnSurface">@color/dark_text_primary</item>
+        <item name="android:colorBackground">@color/dark_background</item>
+        <item name="colorOnBackground">@color/dark_text_primary</item>
+        <item name="android:statusBarColor">@color/dark_background</item>
+        <item name="android:navigationBarColor">@color/dark_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="materialCardViewStyle">@style/Widget.EVDoctor.Card.Dark</item>
+    </style>
+    <style name="Theme.EVDoctor.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_bg_start</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="windowSplashScreenAnimationDuration">800</item>
+        <item name="postSplashScreenTheme">@style/Theme.EVDoctor</item>
+        <item name="android:statusBarColor">@color/splash_bg_start</item>
+        <item name="android:navigationBarColor">@color/splash_bg_start</item>
+    </style>
+    <style name="Widget.EVDoctor.Card.Dark" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/dark_divider</item>
+        <item name="cardBackgroundColor">@color/dark_card</item>
+    </style>
+</resources>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Splash Theme -->
+    <style name="Theme.EVDoctor.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_bg_start</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="windowSplashScreenAnimationDuration">800</item>
+        <item name="postSplashScreenTheme">@style/Theme.EVDoctor</item>
+        <item name="android:statusBarColor">@color/splash_bg_start</item>
+        <item name="android:navigationBarColor">@color/splash_bg_start</item>
+    </style>
+
+    <!-- Main App Theme - Light -->
+    <style name="Theme.EVDoctor" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand_blue</item>
+        <item name="colorPrimaryVariant">@color/brand_blue_dark</item>
+        <item name="colorSecondary">@color/brand_purple</item>
+        <item name="colorSecondaryVariant">@color/brand_purple_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSurface">@color/light_surface</item>
+        <item name="colorOnSurface">@color/light_text_primary</item>
+        <item name="android:colorBackground">@color/light_background</item>
+        <item name="colorOnBackground">@color/light_text_primary</item>
+        <item name="android:statusBarColor">@color/light_background</item>
+        <item name="android:navigationBarColor">@color/light_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.EVDoctor.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.EVDoctor.Body2</item>
+        <item name="textAppearanceHeadline1">@style/TextAppearance.EVDoctor.H1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.EVDoctor.H2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.EVDoctor.H3</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.EVDoctor.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.EVDoctor.Subtitle2</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.EVDoctor.Caption</item>
+        <item name="textAppearanceButton">@style/TextAppearance.EVDoctor.Button</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.EVDoctor.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.EVDoctor.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.EVDoctor.Large</item>
+        <item name="materialCardViewStyle">@style/Widget.EVDoctor.Card</item>
+        <item name="bottomNavigationStyle">@style/Widget.EVDoctor.BottomNavigation</item>
+    </style>
+
+    <!-- Text Appearances -->
+    <style name="TextAppearance.EVDoctor.H1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="TextAppearance.EVDoctor.H2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="TextAppearance.EVDoctor.H3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.EVDoctor.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.EVDoctor.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.EVDoctor.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.EVDoctor.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.EVDoctor.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.EVDoctor.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <!-- Shape Appearances -->
+    <style name="ShapeAppearance.EVDoctor.Small" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearance.EVDoctor.Medium" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="ShapeAppearance.EVDoctor.Large" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+
+    <!-- Widget Styles -->
+    <style name="Widget.EVDoctor.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/light_divider</item>
+    </style>
+
+    <style name="Widget.EVDoctor.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemTextAppearanceActive">@style/TextAppearance.EVDoctor.Caption</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.EVDoctor.Caption</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="Widget.EVDoctor.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="backgroundTint">@color/brand_blue</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="Widget.EVDoctor.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="strokeColor">@color/brand_blue</item>
+        <item name="android:textColor">@color/brand_blue</item>
+    </style>
+
+    <!-- Input Style -->
+    <style name="Widget.EVDoctor.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxStrokeColor">@color/input_stroke_selector</item>
+        <item name="hintTextColor">@color/brand_blue</item>
+        <item name="boxBackgroundColor">@color/light_input_bg</item>
+    </style>
+
+    <!-- Dropdown Spinner -->
+    <style name="Widget.EVDoctor.Spinner" parent="Widget.AppCompat.Spinner.DropDown">
+        <item name="android:background">@drawable/bg_spinner</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- Chip Style -->
+    <style name="Widget.EVDoctor.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipCornerRadius">12dp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+    <!-- Toolbar Style -->
+    <style name="Widget.EVDoctor.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="titleTextAppearance">@style/TextAppearance.EVDoctor.H3</item>
+    </style>
+
+</resources>

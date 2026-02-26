@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="12dp"
+    android:background="@drawable/bg_status_warning"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/ivFaultIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_warning"
+        android:layout_marginEnd="12dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvFaultCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FAULT_CODE"
+            android:fontFamily="@font/inter_semibold"
+            android:textSize="11sp"
+            android:textColor="@color/status_warning"
+            android:letterSpacing="0.05" />
+
+        <TextView
+            android:id="@+id/tvFaultDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fault description"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="13sp"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="2dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvFaultSeverity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MEDIUM"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="10sp"
+        android:textColor="@color/status_warning"
+        android:letterSpacing="0.05" />
+
+</LinearLayout>

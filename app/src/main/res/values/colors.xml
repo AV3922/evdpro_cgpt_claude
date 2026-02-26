@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Brand Colors - Blue-Purple Gradient Palette -->
+    <color name="brand_blue">#4A6CF7</color>
+    <color name="brand_purple">#7B5EA7</color>
+    <color name="brand_blue_light">#6B8BFF</color>
+    <color name="brand_purple_light">#9B7EC8</color>
+    <color name="brand_blue_dark">#2A4CC7</color>
+    <color name="brand_purple_dark">#5B3E87</color>
+
+    <!-- Gradient Colors -->
+    <color name="gradient_start">#4A6CF7</color>
+    <color name="gradient_mid">#6A52D3</color>
+    <color name="gradient_end">#7B5EA7</color>
+
+    <!-- Light Theme Colors -->
+    <color name="light_background">#F8F9FF</color>
+    <color name="light_surface">#FFFFFF</color>
+    <color name="light_surface_variant">#F0F2FF</color>
+    <color name="light_card">#FFFFFF</color>
+    <color name="light_text_primary">#1A1A2E</color>
+    <color name="light_text_secondary">#5A5A7A</color>
+    <color name="light_text_tertiary">#9A9AB0</color>
+    <color name="light_divider">#E8EAFF</color>
+    <color name="light_icon_tint">#5A5A7A</color>
+    <color name="light_input_bg">#F0F2FF</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="dark_background">#0D0D1A</color>
+    <color name="dark_surface">#151524</color>
+    <color name="dark_surface_variant">#1E1E30</color>
+    <color name="dark_card">#1A1A2E</color>
+    <color name="dark_text_primary">#EEEEFF</color>
+    <color name="dark_text_secondary">#9898B8</color>
+    <color name="dark_text_tertiary">#5A5A7A</color>
+    <color name="dark_divider">#2A2A40</color>
+    <color name="dark_icon_tint">#9898B8</color>
+    <color name="dark_input_bg">#1E1E30</color>
+
+    <!-- Status Colors -->
+    <color name="status_good">#4CAF50</color>
+    <color name="status_warning">#FF9800</color>
+    <color name="status_critical">#F44336</color>
+    <color name="status_info">#2196F3</color>
+    <color name="status_good_light">#E8F5E9</color>
+    <color name="status_warning_light">#FFF3E0</color>
+    <color name="status_critical_light">#FFEBEE</color>
+    <color name="status_info_light">#E3F2FD</color>
+
+    <!-- Battery Colors -->
+    <color name="battery_full">#4CAF50</color>
+    <color name="battery_high">#8BC34A</color>
+    <color name="battery_medium">#FFC107</color>
+    <color name="battery_low">#FF5722</color>
+    <color name="battery_critical">#F44336</color>
+
+
+    <!-- Chart Colors -->
+    <color name="chart_voltage">#4A6CF7</color>
+    <color name="chart_current">#7B5EA7</color>
+    <color name="chart_soc">#4CAF50</color>
+    <color name="chart_temperature">#FF9800</color>
+    <color name="chart_grid">#2A2A40</color>
+    <color name="chart_grid_light">#E8EAFF</color>
+
+    <!-- Accent Colors -->
+    <color name="accent_teal">#00BCD4</color>
+    <color name="accent_orange">#FF6B35</color>
+    <color name="accent_green">#4CAF50</color>
+
+    <!-- Common -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="overlay_dark">#66000000</color>
+    <color name="overlay_light">#33FFFFFF</color>
+
+    <!-- Splash specific -->
+    <color name="splash_bg_start">#0D0D1A</color>
+    <color name="splash_bg_end">#1A1A2E</color>
+</resources>

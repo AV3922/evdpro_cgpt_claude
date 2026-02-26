@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <View
+        android:id="@+id/statusDot"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:background="@drawable/bg_orb_blue"
+        android:layout_marginEnd="12dp" />
+
+    <TextView
+        android:id="@+id/tvParamName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Parameter"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="13sp"
+        android:textColor="?attr/colorOnSurface"
+        android:alpha="0.7" />
+
+    <TextView
+        android:id="@+id/tvParamValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-- V"
+        android:fontFamily="@font/inter_semibold"
+        android:textSize="13sp"
+        android:textColor="?attr/colorOnSurface"
+        android:layout_marginEnd="12dp" />
+
+    <TextView
+        android:id="@+id/tvParamStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NORMAL"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="10sp"
+        android:textColor="@color/status_good"
+        android:letterSpacing="0.05" />
+
+</LinearLayout>

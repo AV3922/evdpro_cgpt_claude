@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="battery_chemistry_options">
+        <item>Select Chemistry Type</item>
+        <item>Lithium-Ion (Li-Ion)</item>
+        <item>Lithium Iron Phosphate (LiFePO4)</item>
+        <item>Lithium Polymer (LiPo)</item>
+        <item>Nickel-Metal Hydride (NiMH)</item>
+        <item>Lead Acid (VRLA)</item>
+        <item>Nickel-Cadmium (NiCd)</item>
+        <item>Solid-State</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="battery_makes">
+        <item>Select Battery Make</item>
+        <item>CATL</item>
+        <item>Panasonic</item>
+        <item>LG Energy Solution</item>
+        <item>Samsung SDI</item>
+        <item>BYD</item>
+        <item>Tesla</item>
+        <item>SK Innovation</item>
+        <item>SVOLT Energy</item>
+        <item>Northvolt</item>
+        <item>Other</item>
+    </string-array>
+    <array name="com_google_android_gms_fonts_certs">
+        <item>@array/com_google_android_gms_fonts_certs_dev</item>
+        <item>@array/com_google_android_gms_fonts_certs_prod</item>
+    </array>
+    <string-array name="com_google_android_gms_fonts_certs_dev">
+        <item>
+            MIIEqDCCA5CgAwIBAgIJANWFuGx90071MA0GCSqGSIb3DQEBBAUAMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEPMA0GA1UEChMGR29vZ2xlMRQwEgYDVQQLEwtFbmdpbmVlcmluZzEUMBIGA1UEAxMLSmVhbiBEZXNzZXQwHhcNMTMwMzA0MTcxMzQwWhcNMzgwMjI2MTcxMzQwWjCBlDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xDzANBgNVBAoTBkdvb2dsZTEUMBIGA1UECxMLRW5naW5lZXJpbmcxFDASBgNVBAMTC0plYW4gRGVzc2V0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2a2rwplBQLF29amygykEMmYz0+Kcj3bKBp29Pc9Qb5+MHtBMp8RP7JFXMTXYJRQU3TMTQHIH87eDKo+X8pcm0RzCVmGWbI7TaFDQ04EQbT4Jom2SXdCnC1q50NqObnVR6nqnVbzVlmRlGAauLBxV6tHKHfFhOiW5i7VN8FVzuCvBUfFwf+rVHhQFC+bJuRLMIBHqMeGGCJKcLHUzVTjAbGCDwqUJzMT5p7E4K+3RLQTzHRq+1IqMT8KJEqLKFqXzIXCQxl/9nHXGxCWrY+FLjUGbmXrNHdSu40HQ37eNQx0K6iZnGixKSsTFEtKnFW0wm7MBfMicLCVBrFAIDAQABo4HlMIHiMB0GA1UdDgQWBBTnMIKoGnZIgTs4f3OY1RIKUloHeTCBsgYDVR0jBIGqMIGngBTnMIKoGnZIgTs4f3OY1RIKUloHeaGBmqSBlzCBlDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xDzANBgNVBAoTBkdvb2dsZTEUMBIGA1UECxMLRW5naW5lZXJpbmcxFDASBgNVBAMTC0plYW4gRGVzc2V0ggkA1YW4bH3TjnUwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQQFAAOCAQEAMePCRE0YCPm7d6jqfQ4vHBZJUjTgCz0UhucQECdvS9FDJhPNJ2I3sBQ5BRYFj6oDGPqBEH8OBG1hYEfpBekLYJOhqpU0hFLVsHtGYA9jXBoBcxFPrTEgE0oSoVLKaHh3CDtFHLkIkS5Nk4RjJsKhK0mL2dYBDiI28lCXH/GKZkpVwmK7XiZIi8pVHqY2yXQFBi0c9SiY/F7qC5nLpH0pCZRiCxGZxJPGWxYXEDl2bTjBBdTtikB9Sc2igVLtdoJMnYp98JJ1Q==
+        </item>
+    </string-array>
+    <string-array name="com_google_android_gms_fonts_certs_prod">
+        <item>
+            MIIEQzCCAyugAwIBAgIJAMLgh0ZkSjCNMA0GCSqGSIb3DQEBBAUAMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDAeFw0wODA4MjEyMzEzMzRaFw0zNjAxMDcyMzEzMzRaMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBAKtWLgDYO6IIrgqWbxJOKdoR8qtW0I9Y4sypEwPpt1TTcvZApxsdyxMJAWXFqTAQk+KtgcFm5bdgAhwfD7KSbsRDhz4lbzMdBpvXHDwSPwfIGaRzuK2QJKiEoq4i+V+WlZbIXJuuRiGOb0CCQHQeROUUQiRMmkMuZqAFb36frLxI4QRVRFRwNKl6NmLRXPmK71g5tBv9UYg8GGqRvMMKyBZSRFE0FBkjH0W2TaZYEwJBoLb8HpiK5JkmFHbp7D3o7mHcwLAHoFM+aOqr7JcnPH+l0AIZYXnSd7hv2yHfXExiIqPRfnH+7Ef6cMpvzT0Yw0CKJeOAAgMBAAGjgdMwgdAwHQYDVR0OBBYEFMd9jMIhF1Fn8rZFdhL3ql0PVDQTMB8GA1UdIwQYMBaAFMd9jMIhF1Fn8rZFdhL3ql0PVDQTMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0PAQH/BAQDAgHGMBAGCiqGSIb3Y2QGAgEEAgUAMDQGCiqGSIb3Y2QGAgIEJjAkAgECAgEEBB5jb20uZ29vZ2xlLmFuZHJvaWQuZ3NmLnByb3ZpZGVyMDIGCiqGSIb3Y2QGAgMEJDAiAgEDAgEEBBpjb20uZ29vZ2xlLmFuZHJvaWQuZ21zLmZvbnRzMA0GCSqGSIb3DQEBBAUAA4IBAQCdwHnZGZVoFR+I+v3eMh4mJODTPvMT0XCH5iMH1Hj0HXMI5+JfCE3KUlQrp0c9cCCCQ63nGnB0r31UVcMc1mfWWFBVkHAFMBJoFPRFJBRMOZXOiVb1R4eqHbgBQi0e8S8b8m82Fmh9JL+Zs3I3XjzQkFXh73GWmAHWtCqBXIY8K2Zw0VNvPQEgMVMQoKb3IFFB+kiqEq+a3V2YZKaXDcb0D24QBhCkHI0qr1ZOvPXaY6BzAl6pFPOoLhV9gNfWYc+B5w==
+        </item>
+    </string-array>
+    <string-array name="vehicle_type_options">
+        <item>Select Vehicle Type</item>
+        <item>Electric Car</item>
+        <item>Electric Scooter</item>
+        <item>Electric Bicycle</item>
+        <item>Electric Bus</item>
+        <item>Electric Truck</item>
+        <item>Electric Motorcycle</item>
+        <item>Golf Cart</item>
+        <item>Industrial EV</item>
+        <item>Other</item>
+    </string-array>
+    <color name="accent_green">#4CAF50</color>
+    <color name="accent_orange">#FF6B35</color>
+    <color name="accent_teal">#00BCD4</color>
+    <color name="battery_critical">#F44336</color>
+    <color name="battery_full">#4CAF50</color>
+    <color name="battery_high">#8BC34A</color>
+    <color name="battery_low">#FF5722</color>
+    <color name="battery_medium">#FFC107</color>
+    <color name="black">#000000</color>
+    <color name="brand_blue">#4A6CF7</color>
+    <color name="brand_blue_dark">#2A4CC7</color>
+    <color name="brand_blue_light">#6B8BFF</color>
+    <color name="brand_purple">#7B5EA7</color>
+    <color name="brand_purple_dark">#5B3E87</color>
+    <color name="brand_purple_light">#9B7EC8</color>
+    <color name="chart_current">#7B5EA7</color>
+    <color name="chart_grid">#2A2A40</color>
+    <color name="chart_grid_light">#E8EAFF</color>
+    <color name="chart_soc">#4CAF50</color>
+    <color name="chart_temperature">#FF9800</color>
+    <color name="chart_voltage">#4A6CF7</color>
+    <color name="dark_background">#0D0D1A</color>
+    <color name="dark_card">#1A1A2E</color>
+    <color name="dark_divider">#2A2A40</color>
+    <color name="dark_icon_tint">#9898B8</color>
+    <color name="dark_input_bg">#1E1E30</color>
+    <color name="dark_surface">#151524</color>
+    <color name="dark_surface_variant">#1E1E30</color>
+    <color name="dark_text_primary">#EEEEFF</color>
+    <color name="dark_text_secondary">#9898B8</color>
+    <color name="dark_text_tertiary">#5A5A7A</color>
+    <color name="gradient_end">#7B5EA7</color>
+    <color name="gradient_mid">#6A52D3</color>
+    <color name="gradient_start">#4A6CF7</color>
+    <color name="light_background">#F8F9FF</color>
+    <color name="light_card">#FFFFFF</color>
+    <color name="light_divider">#E8EAFF</color>
+    <color name="light_icon_tint">#5A5A7A</color>
+    <color name="light_input_bg">#F0F2FF</color>
+    <color name="light_surface">#FFFFFF</color>
+    <color name="light_surface_variant">#F0F2FF</color>
+    <color name="light_text_primary">#1A1A2E</color>
+    <color name="light_text_secondary">#5A5A7A</color>
+    <color name="light_text_tertiary">#9A9AB0</color>
+    <color name="overlay_dark">#66000000</color>
+    <color name="overlay_light">#33FFFFFF</color>
+    <color name="splash_bg_end">#1A1A2E</color>
+    <color name="splash_bg_start">#0D0D1A</color>
+    <color name="status_critical">#F44336</color>
+    <color name="status_critical_light">#FFEBEE</color>
+    <color name="status_good">#4CAF50</color>
+    <color name="status_good_light">#E8F5E9</color>
+    <color name="status_info">#2196F3</color>
+    <color name="status_info_light">#E3F2FD</color>
+    <color name="status_warning">#FF9800</color>
+    <color name="status_warning_light">#FFF3E0</color>
+    <color name="surface_color">@color/dark_surface</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <dimen name="bottom_nav_height">64dp</dimen>
+    <dimen name="button_corner">14dp</dimen>
+    <dimen name="button_height">52dp</dimen>
+    <dimen name="button_height_sm">40dp</dimen>
+    <dimen name="card_elevation">0dp</dimen>
+    <dimen name="card_margin">12dp</dimen>
+    <dimen name="card_padding">20dp</dimen>
+    <dimen name="chart_height">200dp</dimen>
+    <dimen name="corner_full">100dp</dimen>
+    <dimen name="corner_lg">16dp</dimen>
+    <dimen name="corner_md">12dp</dimen>
+    <dimen name="corner_sm">8dp</dimen>
+    <dimen name="corner_xl">24dp</dimen>
+    <dimen name="corner_xs">4dp</dimen>
+    <dimen name="icon_lg">32dp</dimen>
+    <dimen name="icon_md">24dp</dimen>
+    <dimen name="icon_sm">16dp</dimen>
+    <dimen name="icon_xl">48dp</dimen>
+    <dimen name="icon_xxl">64dp</dimen>
+    <dimen name="input_corner">12dp</dimen>
+    <dimen name="input_height">56dp</dimen>
+    <dimen name="metric_icon_container">48dp</dimen>
+    <dimen name="metric_icon_size">24dp</dimen>
+    <dimen name="progress_size_lg">120dp</dimen>
+    <dimen name="progress_size_md">80dp</dimen>
+    <dimen name="progress_size_sm">60dp</dimen>
+    <dimen name="progress_stroke_width">8dp</dimen>
+    <dimen name="screen_padding">20dp</dimen>
+    <dimen name="screen_padding_top">12dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_xxl">48dp</dimen>
+    <dimen name="splash_icon_size">140dp</dimen>
+    <dimen name="splash_logo_size">100dp</dimen>
+    <dimen name="status_dot_size">8dp</dimen>
+    <string name="about">About</string>
+    <string name="app_name">EV DOCTOR</string>
+    <string name="app_tagline">Battery Intelligence Platform</string>
+    <string name="back">Back</string>
+    <string name="battery_capacity">Nominal Capacity (Ah)</string>
+    <string name="battery_cells">Number of Cells</string>
+    <string name="battery_chemistry">Battery Chemistry</string>
+    <string name="battery_faults">Battery Faults</string>
+    <string name="battery_info">Battery Information</string>
+    <string name="battery_make">Battery Make</string>
+    <string name="battery_model">Battery Model</string>
+    <string name="battery_voltage">Nominal Voltage (V)</string>
+    <string name="bluetooth_connect">Bluetooth</string>
+    <string name="bluetooth_connected">Connected</string>
+    <string name="bluetooth_disconnected">Disconnected</string>
+    <string name="bluetooth_scan">Scan Devices</string>
+    <string name="bt_enable">Enable Bluetooth</string>
+    <string name="bt_no_devices">No devices found</string>
+    <string name="bt_permission_required">Bluetooth permission required</string>
+    <string name="bt_scanning">Scanning for devices…</string>
+    <string name="bt_title">Select Device</string>
+    <string name="cancel">Cancel</string>
+    <string name="capacity">Capacity</string>
+    <string name="checking_connection">Checking internet connectivity…</string>
+    <string name="client_email">Email Address</string>
+    <string name="client_id">Client ID</string>
+    <string name="client_info">Client Information</string>
+    <string name="client_name">Client Name</string>
+    <string name="client_phone">Phone Number</string>
+    <string name="close">Close</string>
+    <string name="company_name">Battery Ok Technologies</string>
+    <string name="confirm">Confirm</string>
+    <string name="connecting">Connecting…</string>
+    <string name="connecting_device">Connecting…</string>
+    <string name="connection_available">Connection established</string>
+    <string name="continue_offline">Continue Offline</string>
+    <string name="critical">CRITICAL</string>
+    <string name="current">Current</string>
+    <string name="cycles">Cycle Count</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="dashboard_title">Live Dashboard</string>
+    <string name="download_pdf">Download PDF</string>
+    <string name="energy_params">Energy Parameters</string>
+    <string name="error_invalid_email">Invalid email address</string>
+    <string name="error_invalid_phone">Invalid phone number</string>
+    <string name="error_required">This field is required</string>
+    <string name="error_select_mode">Please select a test mode</string>
+    <string name="excellent">EXCELLENT</string>
+    <string name="fault_detected">Fault Detected</string>
+    <string name="generate_report">Generate Report</string>
+    <string name="good">GOOD</string>
+    <string name="health">Battery Health</string>
+    <string name="health_params">Health Parameters</string>
+    <string name="hint_battery_make">e.g. CATL, Panasonic</string>
+    <string name="hint_battery_model">Enter battery model</string>
+    <string name="hint_capacity">e.g. 100</string>
+    <string name="hint_cells">e.g. 16</string>
+    <string name="hint_client_id">Enter client ID</string>
+    <string name="hint_client_name">Enter client name</string>
+    <string name="hint_email">Enter email address</string>
+    <string name="hint_phone">Enter phone number</string>
+    <string name="hint_vehicle_model">e.g. Tesla Model 3</string>
+    <string name="hint_vehicle_number">Enter vehicle number</string>
+    <string name="hint_voltage">e.g. 48</string>
+    <string name="home_title">New Test</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="mode_flash">Flash Mode</string>
+    <string name="mode_flash_desc">Quick diagnostic scan — ideal for rapid assessments</string>
+    <string name="mode_normal">Normal Mode</string>
+    <string name="mode_normal_desc">Comprehensive analysis — full battery health evaluation</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_report">Report</string>
+    <string name="nav_settings">Settings</string>
+    <string name="no_connection">No internet connection</string>
+    <string name="no_device">No Device Connected</string>
+    <string name="no_faults">No Faults Detected</string>
+    <string name="normal">NORMAL</string>
+    <string name="ok">OK</string>
+    <string name="overall_health">Overall Health Score</string>
+    <string name="pause_test">Pause</string>
+    <string name="poor">POOR</string>
+    <string name="power">Power</string>
+    <string name="powered_by">Powered by AI</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="real_time">REAL-TIME</string>
+    <string name="report_date">Date</string>
+    <string name="report_duration">Duration</string>
+    <string name="report_subtitle">Battery Health Analysis</string>
+    <string name="report_time">Time</string>
+    <string name="report_title">Test Report</string>
+    <string name="resistance">Internal Resistance</string>
+    <string name="resume_test">Resume</string>
+    <string name="retry">Retry</string>
+    <string name="safe">SAFE</string>
+    <string name="safety_status">Safety Status</string>
+    <string name="select_chemistry">Select chemistry type</string>
+    <string name="settings">Settings</string>
+    <string name="share_report">Share Report</string>
+    <string name="soc">State of Charge</string>
+    <string name="start_test">Start Test</string>
+    <string name="stop_test">Stop Test</string>
+    <string name="system_default">System Default</string>
+    <string name="temperature">Temperature</string>
+    <string name="terms">Terms of Service</string>
+    <string name="test_mode">Test Mode</string>
+    <string name="test_summary">Test Summary</string>
+    <string name="theme">Theme</string>
+    <string name="timer_label">Test Duration</string>
+    <string name="unit_ah">Ah</string>
+    <string name="unit_ampere">A</string>
+    <string name="unit_celsius">°C</string>
+    <string name="unit_mohm">mΩ</string>
+    <string name="unit_percent">%</string>
+    <string name="unit_volt">V</string>
+    <string name="unit_watt">W</string>
+    <string name="vehicle_model">Vehicle Model</string>
+    <string name="vehicle_number">Vehicle Number</string>
+    <string name="version_prefix">Version</string>
+    <string name="voltage">Voltage</string>
+    <string name="warning">WARNING</string>
+    <style name="ShapeAppearance.EVDoctor.Large" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+    <style name="ShapeAppearance.EVDoctor.Medium" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+    <style name="ShapeAppearance.EVDoctor.Small" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+    <style name="TextAppearance.EVDoctor.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="TextAppearance.EVDoctor.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextAppearance.EVDoctor.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+    <style name="TextAppearance.EVDoctor.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="TextAppearance.EVDoctor.H1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+    <style name="TextAppearance.EVDoctor.H2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+    <style name="TextAppearance.EVDoctor.H3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="TextAppearance.EVDoctor.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="TextAppearance.EVDoctor.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Theme.EVDoctor" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand_blue</item>
+        <item name="colorPrimaryVariant">@color/brand_blue_dark</item>
+        <item name="colorSecondary">@color/brand_purple</item>
+        <item name="colorSecondaryVariant">@color/brand_purple_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSurface">@color/light_surface</item>
+        <item name="colorOnSurface">@color/light_text_primary</item>
+        <item name="android:colorBackground">@color/light_background</item>
+        <item name="colorOnBackground">@color/light_text_primary</item>
+        <item name="android:statusBarColor">@color/light_background</item>
+        <item name="android:navigationBarColor">@color/light_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.EVDoctor.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.EVDoctor.Body2</item>
+        <item name="textAppearanceHeadline1">@style/TextAppearance.EVDoctor.H1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.EVDoctor.H2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.EVDoctor.H3</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.EVDoctor.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.EVDoctor.Subtitle2</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.EVDoctor.Caption</item>
+        <item name="textAppearanceButton">@style/TextAppearance.EVDoctor.Button</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.EVDoctor.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.EVDoctor.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.EVDoctor.Large</item>
+        <item name="materialCardViewStyle">@style/Widget.EVDoctor.Card</item>
+        <item name="bottomNavigationStyle">@style/Widget.EVDoctor.BottomNavigation</item>
+    </style>
+    <style name="Theme.EVDoctor.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_bg_start</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="windowSplashScreenAnimationDuration">800</item>
+        <item name="postSplashScreenTheme">@style/Theme.EVDoctor</item>
+        <item name="android:statusBarColor">@color/splash_bg_start</item>
+        <item name="android:navigationBarColor">@color/splash_bg_start</item>
+    </style>
+    <style name="Widget.EVDoctor.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemTextAppearanceActive">@style/TextAppearance.EVDoctor.Caption</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.EVDoctor.Caption</item>
+    </style>
+    <style name="Widget.EVDoctor.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="strokeColor">@color/brand_blue</item>
+        <item name="android:textColor">@color/brand_blue</item>
+    </style>
+    <style name="Widget.EVDoctor.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="backgroundTint">@color/brand_blue</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <style name="Widget.EVDoctor.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/light_divider</item>
+    </style>
+    <style name="Widget.EVDoctor.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipCornerRadius">12dp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+    <style name="Widget.EVDoctor.Spinner" parent="Widget.AppCompat.Spinner.DropDown">
+        <item name="android:background">@drawable/bg_spinner</item>
+        <item name="android:padding">8dp</item>
+    </style>
+    <style name="Widget.EVDoctor.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxStrokeColor">@color/input_stroke_selector</item>
+        <item name="hintTextColor">@color/brand_blue</item>
+        <item name="boxBackgroundColor">@color/light_input_bg</item>
+    </style>
+    <style name="Widget.EVDoctor.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="titleTextAppearance">@style/TextAppearance.EVDoctor.H3</item>
+    </style>
+    <declare-styleable name="CircularProgressView">
+        <attr format="float" name="cpv_progress"/>
+        <attr format="float" name="cpv_max"/>
+        <attr format="dimension" name="cpv_strokeWidth"/>
+        <attr format="color" name="cpv_progressColor"/>
+        <attr format="color" name="cpv_backgroundColor"/>
+    </declare-styleable>
+    <declare-styleable name="GradientButton">
+        <attr format="color" name="gradientStart"/>
+        <attr format="color" name="gradientEnd"/>
+        <attr format="integer" name="gradientAngle"/>
+        <attr format="string" name="buttonText"/>
+        <attr format="dimension" name="buttonCornerRadius"/>
+    </declare-styleable>
+    <declare-styleable name="MetricCardView">
+        <attr format="string" name="mcv_title"/>
+        <attr format="string" name="mcv_value"/>
+        <attr format="string" name="mcv_unit"/>
+        <attr format="reference" name="mcv_icon"/>
+        <attr format="color" name="mcv_iconColor"/>
+        <attr format="color" name="mcv_iconBg"/>
+    </declare-styleable>
+</resources>

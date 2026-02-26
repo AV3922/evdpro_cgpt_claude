@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@drawable/bg_input_field">
+
+    <TextView
+        android:id="@+id/tvParamLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Label"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="11sp"
+        android:textColor="?attr/colorOnSurface"
+        android:alpha="0.5" />
+
+    <TextView
+        android:id="@+id/tvParamValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="20sp"
+        android:textColor="@color/brand_blue"
+        android:layout_marginTop="4dp"
+        android:includeFontPadding="false" />
+
+    <TextView
+        android:id="@+id/tvParamUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="unit"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="11sp"
+        android:textColor="?attr/colorOnSurface"
+        android:alpha="0.4"
+        android:layout_marginTop="2dp" />
+
+</LinearLayout>

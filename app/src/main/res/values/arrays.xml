@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="battery_chemistry_options">
+        <item>Select Chemistry Type</item>
+        <item>Lithium-Ion (Li-Ion)</item>
+        <item>Lithium Iron Phosphate (LiFePO4)</item>
+        <item>Lithium Polymer (LiPo)</item>
+        <item>Nickel-Metal Hydride (NiMH)</item>
+        <item>Lead Acid (VRLA)</item>
+        <item>Nickel-Cadmium (NiCd)</item>
+        <item>Solid-State</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="vehicle_type_options">
+        <item>Select Vehicle Type</item>
+        <item>Electric Car</item>
+        <item>Electric Scooter</item>
+        <item>Electric Bicycle</item>
+        <item>Electric Bus</item>
+        <item>Electric Truck</item>
+        <item>Electric Motorcycle</item>
+        <item>Golf Cart</item>
+        <item>Industrial EV</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="battery_makes">
+        <item>Select Battery Make</item>
+        <item>CATL</item>
+        <item>Panasonic</item>
+        <item>LG Energy Solution</item>
+        <item>Samsung SDI</item>
+        <item>BYD</item>
+        <item>Tesla</item>
+        <item>SK Innovation</item>
+        <item>SVOLT Energy</item>
+        <item>Northvolt</item>
+        <item>Other</item>
+    </string-array>
+</resources>
