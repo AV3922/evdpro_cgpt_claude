@@ -1,36 +1,7 @@
-# Gradle
+# Android/Gradle local and generated files
 .gradle/
-build/
 **/build/
-
-# Local configuration
 local.properties
 
-# Android Studio
-.idea/
-*.iml
-
-# Generated files
-captures/
-.externalNativeBuild/
-.cxx/
-
-# APK / AAB
-*.apk
-*.aab
-
-# Java/Kotlin compiled
-*.class
-
-# Logs
-*.log
-
-# OS files
-.DS_Store
-
-# Keystore
-*.jks
-*.keystore
-
-# NDK
-obj/
+# Codex PR system currently rejects binary diffs
+gradle/wrapper/gradle-wrapper.jar
