@@ -136,6 +136,13 @@ class HomeActivity : AppCompatActivity() {
             binding.tilChemistry.error = null
         }
 
+        if (binding.etCapacity.text.isNullOrBlank()) {
+            binding.tilCapacity.error = getString(R.string.error_required)
+            isValid = false
+        } else {
+            binding.tilCapacity.error = null
+        }
+
         if (selectedMode == null) {
             binding.tvModeError.visibility = View.VISIBLE
             isValid = false
@@ -156,7 +163,8 @@ class HomeActivity : AppCompatActivity() {
             make = binding.actvBatteryMake.text.toString().trim(), // Chemistry type: LFP/LMFP/NMC/VRLA
             model = binding.etBatteryModel.text.toString().trim(), // Serial number
             chemistry = binding.actvBatteryMake.text.toString().trim(),
-            nominalVoltage = binding.actvChemistry.text.toString().toDoubleOrNull() ?: 0.0
+            nominalVoltage = binding.actvChemistry.text.toString().toDoubleOrNull() ?: 0.0,
+            nominalCapacity = binding.etCapacity.text.toString().toDoubleOrNull() ?: 0.0
         )
 
         val session = TestSession(
