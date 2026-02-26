@@ -74,7 +74,7 @@
     <string name="generate_report">Generate Report</string>
     <string name="bluetooth_connect">Bluetooth</string>
     <string name="pair_device">Pair Device</string>
-    <string name="bluetooth_scan">Scan Devices</string>
+    <string name="bluetooth_scan">Refresh</string>
     <string name="bluetooth_connected">Connected</string>
     <string name="bluetooth_disconnected">Disconnected</string>
     <string name="no_device">No Device Connected</string>

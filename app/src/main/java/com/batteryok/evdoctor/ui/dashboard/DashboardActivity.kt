@@ -155,7 +155,7 @@ class DashboardActivity : AppCompatActivity() {
             lineWidth = 2.5f
             setDrawCircles(false)
             setDrawValues(false)
-            mode = LineDataSet.Mode.CUBIC_BEZIER
+            mode = LineDataSet.Mode.LINEAR
             cubicIntensity = 0.2f
             setDrawFilled(true)
             fillAlpha = 30
@@ -374,7 +374,7 @@ class DashboardActivity : AppCompatActivity() {
         runOnUiThread {
             readings.add(reading)
             updateUI(reading, totalSeconds)
-            binding.tvTimer.text = String.format("%02d:%02d:%02d", hour, min, sec)
+            binding.tvTimer.text = String.format("%02d : %02d : %02d", hour, min, sec)
         }
     }
 
