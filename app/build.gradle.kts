@@ -3,6 +3,13 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 
+val smtpHost = System.getenv("EVDOCTOR_SMTP_HOST") ?: "smtp.zoho.com"
+val smtpPort = System.getenv("EVDOCTOR_SMTP_PORT") ?: "465"
+val smtpUser = System.getenv("EVDOCTOR_SMTP_USER") ?: ""
+val smtpPassword = System.getenv("EVDOCTOR_SMTP_PASSWORD") ?: ""
+val smtpSenderName = System.getenv("EVDOCTOR_SMTP_SENDER_NAME") ?: "EV Doctor"
+val smtpRecipients = System.getenv("EVDOCTOR_SMTP_RECIPIENTS") ?: ""
+
 android {
     namespace = "com.batteryok.evdoctor"
     compileSdk = 34
@@ -15,6 +22,13 @@ android {
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "SMTP_HOST", "\"$smtpHost\"")
+        buildConfigField("int", "SMTP_PORT", smtpPort)
+        buildConfigField("String", "SMTP_USER", "\"$smtpUser\"")
+        buildConfigField("String", "SMTP_PASSWORD", "\"$smtpPassword\"")
+        buildConfigField("String", "SMTP_SENDER_NAME", "\"$smtpSenderName\"")
+        buildConfigField("String", "SMTP_RECIPIENTS", "\"$smtpRecipients\"")
     }
 
     buildTypes {
@@ -37,6 +51,13 @@ android {
         viewBinding = true
         buildConfig = true
     }
+
+    packaging {
+        resources {
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/NOTICE.md"
+        }
+    }
 }
 
 dependencies {
@@ -54,6 +75,9 @@ dependencies {
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.poi.ooxml)
+    implementation(libs.android.mail)
+    implementation(libs.android.activation)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
