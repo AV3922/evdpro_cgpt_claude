@@ -1,7 +1,6 @@
 package com.batteryok.evdoctor.ui.report
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.batteryok.evdoctor.R
 import com.batteryok.evdoctor.databinding.ActivityReportBinding
+import com.batteryok.evdoctor.databinding.LayoutParamCardBinding
+import com.batteryok.evdoctor.databinding.LayoutReportInfoItemBinding
+import com.batteryok.evdoctor.databinding.LayoutSafetyRowBinding
 import com.batteryok.evdoctor.model.BatteryFault
 import com.batteryok.evdoctor.model.BatteryReport
 import com.batteryok.evdoctor.model.FaultSeverity
@@ -90,9 +92,9 @@ class ReportActivity : AppCompatActivity() {
         setInfoItem(binding.itemDate, "Date", DATE_ONLY_FORMAT.format(Date(report.endTime)))
     }
 
-    private fun setInfoItem(view: View, label: String, value: String) {
-        view.findViewById<TextView>(R.id.tvLabel)?.text = label
-        view.findViewById<TextView>(R.id.tvValue)?.text = value
+    private fun setInfoItem(view: LayoutReportInfoItemBinding, label: String, value: String) {
+        view.tvLabel.text = label
+        view.tvValue.text = value
     }
 
     private fun populateSafetyStatus() {
@@ -161,16 +163,16 @@ class ReportActivity : AppCompatActivity() {
         )
     }
 
-    private fun setSafetyRow(view: View, name: String, value: String, statusText: String) {
+    private fun setSafetyRow(view: LayoutSafetyRowBinding, name: String, value: String, statusText: String) {
         val dotColor = when (statusText) {
             "CRITICAL" -> getColor(R.color.status_critical)
             "WARNING" -> getColor(R.color.status_warning)
             else -> getColor(R.color.status_good)
         }
-        view.findViewById<View>(R.id.statusDot)?.setBackgroundColor(dotColor)
-        view.findViewById<TextView>(R.id.tvParamName)?.text = name
-        view.findViewById<TextView>(R.id.tvParamValue)?.text = value
-        view.findViewById<TextView>(R.id.tvParamStatus)?.apply {
+        view.statusDot.setBackgroundColor(dotColor)
+        view.tvParamName.text = name
+        view.tvParamValue.text = value
+        view.tvParamStatus.apply {
             text = statusText
             setTextColor(
                 when (statusText) {
@@ -245,13 +247,13 @@ class ReportActivity : AppCompatActivity() {
         setParamCard(binding.paramCycles, "Cycle Count", r.cycleCount.toString(), "cycles", R.color.brand_blue)
     }
 
-    private fun setParamCard(view: View, label: String, value: String, unit: String, colorRes: Int) {
-        view.findViewById<TextView>(R.id.tvParamLabel)?.text = label
-        view.findViewById<TextView>(R.id.tvParamValue)?.apply {
+    private fun setParamCard(view: LayoutParamCardBinding, label: String, value: String, unit: String, colorRes: Int) {
+        view.tvParamLabel.text = label
+        view.tvParamValue.apply {
             text = value
             setTextColor(getColor(colorRes))
         }
-        view.findViewById<TextView>(R.id.tvParamUnit)?.text = unit
+        view.tvParamUnit.text = unit
     }
 
     private fun populateAiRecommendation() {

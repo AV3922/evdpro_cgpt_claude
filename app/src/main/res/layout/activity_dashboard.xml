@@ -129,7 +129,7 @@
             android:paddingStart="@dimen/screen_padding"
             android:paddingEnd="@dimen/screen_padding"
             android:paddingTop="16dp"
-            android:paddingBottom="32dp">
+            android:paddingBottom="120dp">
 
             <!-- ══════════════════════════════════════════ -->
             <!-- TIMER + BLUETOOTH STATUS ROW              -->
@@ -175,7 +175,7 @@
                             android:id="@+id/tvTimer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="00:00"
+                            android:text="00 : 00 : 00"
                             android:fontFamily="@font/inter_bold"
                             android:textSize="20sp"
                             android:textColor="#EEEEFF"
@@ -321,6 +321,8 @@
 
                         <!-- Health Score Circle -->
                         <LinearLayout
+                            android:id="@+id/layoutHealthInfo"
+                            android:visibility="gone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
@@ -1003,45 +1005,53 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ══════════════════════════════════════════ -->
-            <!-- ACTION BUTTONS                            -->
-            <!-- ══════════════════════════════════════════ -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <!-- Pause/Resume Button -->
-                <Button
-                    android:id="@+id/btnPauseResume"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/button_height"
-                    android:layout_weight="1"
-                    android:text="@string/pause_test"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/inter_semibold"
-                    android:textColor="@color/brand_blue"
-                    android:background="@drawable/bg_button_outlined"
-                    android:layout_marginEnd="8dp" />
-
-                <!-- Stop Test Button -->
-                <Button
-                    android:id="@+id/btnStopTest"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/button_height"
-                    android:layout_weight="1"
-                    android:text="@string/stop_test"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/inter_semibold"
-                    android:textColor="@color/white"
-                    android:background="@drawable/bg_button_stop"
-                    android:layout_marginStart="8dp" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <!-- Floating ACTION BUTTONS -->
+    <LinearLayout
+        android:id="@+id/floatingActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnPauseResume"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_weight="1"
+            android:text="START"
+            app:icon="@drawable/ic_play"
+            app:iconPadding="10dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/brand_blue"
+            app:backgroundTint="@color/white"
+            app:strokeColor="@color/brand_blue"
+            app:strokeWidth="2dp"
+            android:layout_marginEnd="8dp" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnStopTest"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_weight="1"
+            android:text="@string/stop_test"
+            app:icon="@drawable/ic_stop"
+            app:iconPadding="10dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/brand_blue"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
 
     <!-- Bluetooth Bottom Sheet (initially hidden) -->
     <FrameLayout
