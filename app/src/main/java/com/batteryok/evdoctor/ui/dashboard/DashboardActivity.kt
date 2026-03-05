@@ -108,11 +108,11 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun setupCharts() {
-        setupLineChart(binding.voltageChart, Color.parseColor("#4A6CF7"), "Voltage (V)")
-        setupLineChart(binding.currentChart, Color.parseColor("#7B5EA7"), "Current (A)")
+        setupLineChart(binding.voltageChart)
+        setupLineChart(binding.currentChart)
     }
 
-    private fun setupLineChart(chart: LineChart, color: Int, label: String) {
+    private fun setupLineChart(chart: LineChart) {
         val isDark = ThemeUtils.isDarkMode(this)
         val axisTextColor = if (isDark) Color.parseColor("#9898B8") else Color.parseColor("#5A5A7A")
         val axisGridColor = if (isDark) Color.parseColor("#2A2A40") else Color.parseColor("#E8EAFF")
