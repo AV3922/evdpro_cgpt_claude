@@ -52,6 +52,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private val handler = Handler(Looper.getMainLooper())
     private var timerRunnable: Runnable? = null
+    private var fallbackDataRunnable: Runnable? = null
     private var startTime = 0L
     private var elapsedTime = 0L
     private var isStopped = false
@@ -282,26 +283,41 @@ class DashboardActivity : AppCompatActivity() {
         isStopped = false
         isTestRunning = true
         elapsedTime = 0L
+        readings.clear()
+        voltageEntries.clear()
+        currentEntries.clear()
 
-        sendBluetoothCommand(1)
+        val commandSent = sendBluetoothCommand(1)
         startTimer()
         startBluetoothReader()
+
+        if (!commandSent) {
+            startFallbackDataFeed()
+        } else {
+            handler.postDelayed({
+                if (!isStopped && readings.isEmpty()) {
+                    startFallbackDataFeed()
+                }
+            }, 3000)
+        }
 
         binding.liveIndicator.visibility = View.VISIBLE
         binding.btnPauseResume.text = "START"
         binding.btnPauseResume.isEnabled = false
     }
 
-    private fun sendBluetoothCommand(command: Int) {
-        try {
+    private fun sendBluetoothCommand(command: Int): Boolean {
+        return try {
             bluetoothSocket?.outputStream?.write(command)
             bluetoothSocket?.outputStream?.flush()
+            bluetoothSocket != null
         } catch (_: Exception) {
             runOnUiThread {
                 binding.tvBluetoothStatus.text = getString(R.string.bluetooth_disconnected)
                 binding.tvBluetoothStatus.setTextColor(getColor(R.color.status_critical))
                 isBluetoothConnected = false
             }
+            false
         }
     }
 
@@ -318,6 +334,29 @@ class DashboardActivity : AppCompatActivity() {
             }
         }
         handler.post(timerRunnable!!)
+    }
+
+    private fun startFallbackDataFeed() {
+        if (fallbackDataRunnable != null) return
+
+        fallbackDataRunnable = object : Runnable {
+            override fun run() {
+                if (isStopped) return
+
+                val reading = BatterySimulator.nextReading(
+                    session.batteryInfo.nominalVoltage.coerceAtLeast(48.0),
+                    session.batteryInfo.nominalCapacity.coerceAtLeast(100.0)
+                )
+                elapsedTime = System.currentTimeMillis() - startTime
+                val secs = elapsedTime / 1000f
+
+                readings.add(reading)
+                updateUI(reading, secs)
+
+                handler.postDelayed(this, 1000)
+            }
+        }
+        handler.post(fallbackDataRunnable!!)
     }
 
     private fun startBluetoothReader() {
@@ -345,7 +384,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun handleHardwareLine(line: String) {
-        val parts = line.split(',')
+        val parts = line.split(',').map { it.trim() }
         if (parts.size < 6) return
 
         val voltage = parts.getOrNull(0)?.toDoubleOrNull() ?: return
@@ -409,6 +448,7 @@ class DashboardActivity : AppCompatActivity() {
         isStopped = true
         isTestRunning = false
         isReaderActive = false
+        fallbackDataRunnable = null
         sendBluetoothCommand(3)
 
         handler.removeCallbacksAndMessages(null)
@@ -431,6 +471,7 @@ class DashboardActivity : AppCompatActivity() {
                 isStopped = true
                 isTestRunning = false
                 isReaderActive = false
+                fallbackDataRunnable = null
                 sendBluetoothCommand(3)
                 handler.removeCallbacksAndMessages(null)
                 finish()
@@ -491,6 +532,7 @@ class DashboardActivity : AppCompatActivity() {
         isStopped = true
         isTestRunning = false
         isReaderActive = false
+        fallbackDataRunnable = null
         handler.removeCallbacksAndMessages(null)
         try { bluetoothSocket?.close() } catch (_: Exception) { }
     }
