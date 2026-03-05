@@ -12,6 +12,8 @@ import com.batteryok.evdoctor.model.BatteryInfo
 import com.batteryok.evdoctor.model.ClientInfo
 import com.batteryok.evdoctor.model.TestSession
 import com.batteryok.evdoctor.ui.dashboard.DashboardActivity
+import com.batteryok.evdoctor.utils.TestExportManager
+import com.google.android.material.snackbar.Snackbar
 
 class HomeActivity : AppCompatActivity() {
 
@@ -167,12 +169,22 @@ class HomeActivity : AppCompatActivity() {
             nominalCapacity = binding.etCapacity.text.toString().toDoubleOrNull() ?: 0.0
         )
 
-        val session = TestSession(
+        val startTime = System.currentTimeMillis()
+        val draftSession = TestSession(
             clientInfo = clientInfo,
             batteryInfo = batteryInfo,
             testMode = selectedMode ?: "NORMAL",
-            startTime = System.currentTimeMillis()
+            startTime = startTime
         )
+
+        val exportFile = runCatching {
+            TestExportManager.createSessionWorkbook(this, draftSession)
+        }.getOrElse {
+            Snackbar.make(binding.root, "Unable to create Excel file", Snackbar.LENGTH_LONG).show()
+            return
+        }
+
+        val session = draftSession.copy(exportFilePath = exportFile.absolutePath)
 
         val intent = Intent(this, DashboardActivity::class.java)
         intent.putExtra(EXTRA_SESSION, session)

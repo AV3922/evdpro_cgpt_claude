@@ -14,6 +14,7 @@ import android.provider.Settings
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.app.ActivityCompat
@@ -28,6 +29,7 @@ import com.batteryok.evdoctor.ui.home.HomeActivity
 import com.batteryok.evdoctor.ui.report.ReportActivity
 import com.batteryok.evdoctor.utils.BatterySimulator
 import com.batteryok.evdoctor.utils.BluetoothUtils
+import com.batteryok.evdoctor.utils.TestExportManager
 import com.batteryok.evdoctor.utils.ThemeUtils
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
@@ -38,6 +40,7 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.util.UUID
+import java.util.concurrent.Executors
 import kotlin.concurrent.thread
 
 class DashboardActivity : AppCompatActivity() {
@@ -62,6 +65,7 @@ class DashboardActivity : AppCompatActivity() {
     private var bluetoothSocket: BluetoothSocket? = null
     private var readerThread: Thread? = null
     private var isReaderActive = false
+    private val exportExecutor = Executors.newSingleThreadExecutor()
 
     private val maxDataPoints = 30
 
@@ -87,6 +91,7 @@ class DashboardActivity : AppCompatActivity() {
         setupClickListeners()
         binding.btnPauseResume.text = "START"
         binding.liveIndicator.visibility = View.GONE
+        binding.btnStopTest.text = getString(R.string.finish_test)
     }
 
     private fun setupToolbar() {
@@ -352,6 +357,7 @@ class DashboardActivity : AppCompatActivity() {
 
                 readings.add(reading)
                 updateUI(reading, secs)
+                appendReadingToWorkbook(reading, elapsedTime, "simulator")
 
                 handler.postDelayed(this, 1000)
             }
@@ -415,6 +421,7 @@ class DashboardActivity : AppCompatActivity() {
             updateUI(reading, totalSeconds)
             binding.tvTimer.text = String.format("%02d : %02d : %02d", hour, min, sec)
         }
+        appendReadingToWorkbook(reading, elapsedTime, "bluetooth")
     }
 
     private fun updateUI(reading: BatteryReading, elapsedSeconds: Float) {
@@ -444,12 +451,46 @@ class DashboardActivity : AppCompatActivity() {
         updateChart(binding.currentChart, currentEntries, Color.parseColor("#7B5EA7"), "Current (A)")
     }
 
+    private fun appendReadingToWorkbook(reading: BatteryReading, elapsedMs: Long, source: String) {
+        if (session.exportFilePath.isBlank()) return
+        exportExecutor.execute {
+            runCatching {
+                TestExportManager.appendReading(session.exportFilePath, reading, elapsedMs, source)
+            }
+        }
+    }
+
+    private fun sendWorkbookByEmail() {
+        if (session.exportFilePath.isBlank()) return
+        if (!TestExportManager.hasSmtpConfig()) {
+            runOnUiThread {
+                Toast.makeText(this, "SMTP config missing. Email skipped.", Toast.LENGTH_LONG).show()
+            }
+            return
+        }
+
+        exportExecutor.execute {
+            runCatching {
+                TestExportManager.sendWorkbookBySmtp(session, session.exportFilePath)
+            }.onSuccess {
+                runOnUiThread {
+                    Toast.makeText(this, "Test Excel sent via email", Toast.LENGTH_LONG).show()
+                }
+            }.onFailure {
+                runOnUiThread {
+                    Toast.makeText(this, "Failed to email test Excel", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
     private fun stopTest() {
         isStopped = true
         isTestRunning = false
         isReaderActive = false
         fallbackDataRunnable = null
         sendBluetoothCommand(3)
+        sendWorkbookByEmail()
 
         handler.removeCallbacksAndMessages(null)
         binding.liveIndicator.visibility = View.GONE
@@ -534,6 +575,7 @@ class DashboardActivity : AppCompatActivity() {
         isReaderActive = false
         fallbackDataRunnable = null
         handler.removeCallbacksAndMessages(null)
+        exportExecutor.shutdownNow()
         try { bluetoothSocket?.close() } catch (_: Exception) { }
     }
 

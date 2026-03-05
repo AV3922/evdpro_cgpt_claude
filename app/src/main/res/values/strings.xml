@@ -69,7 +69,8 @@
     <string name="unit_watt">W</string>
     <string name="unit_mohm">mΩ</string>
     <string name="pause_test">Pause</string>
-    <string name="stop_test">Stop Test</string>
+    <string name="stop_test">Finish Test</string>
+    <string name="finish_test">Finish Test</string>
     <string name="resume_test">Resume</string>
     <string name="generate_report">Generate Report</string>
     <string name="bluetooth_connect">Bluetooth</string>
