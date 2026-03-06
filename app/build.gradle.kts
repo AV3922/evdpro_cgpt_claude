@@ -5,10 +5,11 @@ plugins {
 
 val smtpHost = System.getenv("EVDOCTOR_SMTP_HOST") ?: "smtp.zoho.com"
 val smtpPort = System.getenv("EVDOCTOR_SMTP_PORT") ?: "465"
-val smtpUser = System.getenv("EVDOCTOR_SMTP_USER") ?: ""
+val smtpProtocol = System.getenv("EVDOCTOR_SMTP_PROTOCOL") ?: "SSL"
+val smtpUser = System.getenv("EVDOCTOR_SMTP_USER") ?: "data@evegalabs.com"
 val smtpPassword = System.getenv("EVDOCTOR_SMTP_PASSWORD") ?: ""
-val smtpSenderName = System.getenv("EVDOCTOR_SMTP_SENDER_NAME") ?: "EV Doctor"
-val smtpRecipients = System.getenv("EVDOCTOR_SMTP_RECIPIENTS") ?: ""
+val smtpSenderName = System.getenv("EVDOCTOR_SMTP_SENDER_NAME") ?: "E-VEGA LABS"
+val smtpRecipients = System.getenv("EVDOCTOR_SMTP_RECIPIENTS") ?: "data@evegalabs.com"
 
 android {
     namespace = "com.batteryok.evdoctor"
@@ -25,6 +26,7 @@ android {
 
         buildConfigField("String", "SMTP_HOST", "\"$smtpHost\"")
         buildConfigField("int", "SMTP_PORT", smtpPort)
+        buildConfigField("String", "SMTP_PROTOCOL", "\"$smtpProtocol\"")
         buildConfigField("String", "SMTP_USER", "\"$smtpUser\"")
         buildConfigField("String", "SMTP_PASSWORD", "\"$smtpPassword\"")
         buildConfigField("String", "SMTP_SENDER_NAME", "\"$smtpSenderName\"")

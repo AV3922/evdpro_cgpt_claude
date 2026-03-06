@@ -121,7 +121,12 @@ object TestExportManager {
 
         val props = Properties().apply {
             put("mail.smtp.auth", "true")
-            put("mail.smtp.ssl.enable", "true")
+            val useSsl = BuildConfig.SMTP_PROTOCOL.equals("SSL", ignoreCase = true)
+            if (useSsl) {
+                put("mail.smtp.ssl.enable", "true")
+            } else {
+                put("mail.smtp.starttls.enable", "true")
+            }
             put("mail.smtp.host", BuildConfig.SMTP_HOST)
             put("mail.smtp.port", BuildConfig.SMTP_PORT.toString())
         }
