@@ -6,11 +6,15 @@
         android:icon="@drawable/ic_bluetooth"
         android:orderInCategory="1" />
     <item
+        android:id="@+id/menu_pair_device"
+        android:title="@string/pair_device"
+        android:orderInCategory="2" />
+    <item
         android:id="@+id/menu_settings"
         android:title="@string/settings"
-        android:orderInCategory="2" />
+        android:orderInCategory="3" />
     <item
         android:id="@+id/menu_about"
         android:title="@string/about"
-        android:orderInCategory="3" />
+        android:orderInCategory="4" />
 </menu>
