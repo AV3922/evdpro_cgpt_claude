@@ -4,10 +4,9 @@ import android.content.Context
 import com.batteryok.evdoctor.BuildConfig
 import com.batteryok.evdoctor.model.BatteryReading
 import com.batteryok.evdoctor.model.TestSession
-import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import java.io.BufferedWriter
 import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
+import java.io.FileWriter
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -25,9 +24,6 @@ object TestExportManager {
     private val fileNameDateFormat = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US)
     private val displayDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
 
-    private const val SHEET_META = "Session"
-    private const val SHEET_DATA = "Telemetry"
-
     @Synchronized
     fun createSessionWorkbook(context: Context, session: TestSession): File {
         val exportRoot = File(context.getExternalFilesDir(null), "Android")
@@ -38,44 +34,22 @@ object TestExportManager {
         val safeName = sanitizeFilePart(session.clientInfo.name.ifBlank { "Client" })
         val safePhone = sanitizeFilePart(session.clientInfo.phone.ifBlank { "NoContact" })
         val stamped = fileNameDateFormat.format(Date(session.startTime))
-        val file = File(exportRoot, "${safeName}_${safePhone}_${stamped}.xlsx")
+        val file = File(exportRoot, "${safeName}_${safePhone}_${stamped}.csv")
 
-        XSSFWorkbook().use { workbook ->
-            val metaSheet = workbook.createSheet(SHEET_META)
-            val telemetrySheet = workbook.createSheet(SHEET_DATA)
-
-            listOf(
-                "Client Name" to session.clientInfo.name,
-                "Client Contact" to session.clientInfo.phone,
-                "Battery Make" to session.batteryInfo.make,
-                "Battery Model" to session.batteryInfo.model,
-                "Nominal Voltage" to session.batteryInfo.nominalVoltage.toString(),
-                "Nominal Capacity" to session.batteryInfo.nominalCapacity.toString(),
-                "Test Mode" to session.testMode,
-                "Session Started At" to displayDateFormat.format(Date(session.startTime))
-            ).forEachIndexed { rowIndex, (key, value) ->
-                val row = metaSheet.createRow(rowIndex)
-                row.createCell(0).setCellValue(key)
-                row.createCell(1).setCellValue(value)
-            }
-
-            val header = telemetrySheet.createRow(0)
-            listOf(
-                "Timestamp",
-                "ElapsedSeconds",
-                "Source",
-                "Voltage(V)",
-                "Current(A)",
-                "Capacity(Ah)",
-                "SOC(%)",
-                "Temperature(C)",
-                "Power(W)",
-                "InternalResistance(mOhm)"
-            ).forEachIndexed { i, title ->
-                header.createCell(i).setCellValue(title)
-            }
-
-            FileOutputStream(file).use { workbook.write(it) }
+        BufferedWriter(FileWriter(file, false)).use { writer ->
+            writer.appendLine("Section,Key,Value")
+            writer.appendLine(csvLine("Session", "Client Name", session.clientInfo.name))
+            writer.appendLine(csvLine("Session", "Client Contact", session.clientInfo.phone))
+            writer.appendLine(csvLine("Session", "Battery Serial Number", session.batteryInfo.make))
+            writer.appendLine(csvLine("Session", "Battery Chemistry", session.batteryInfo.model))
+            writer.appendLine(csvLine("Session", "Battery Voltage", session.batteryInfo.nominalVoltage.toString()))
+            writer.appendLine(csvLine("Session", "Battery Capacity", session.batteryInfo.nominalCapacity.toString()))
+            writer.appendLine(csvLine("Session", "Test Mode", session.testMode))
+            writer.appendLine(csvLine("Session", "Session Started At", displayDateFormat.format(Date(session.startTime))))
+            writer.appendLine()
+            writer.appendLine(
+                "Timestamp,ElapsedSeconds,Source,Voltage(V),Current(A),Capacity(Ah),SOC(%),Temperature(C),Power(W),InternalResistance(mOhm)"
+            )
         }
 
         return file
@@ -87,23 +61,21 @@ object TestExportManager {
         val file = File(filePath)
         if (!file.exists()) return
 
-        FileInputStream(file).use { input ->
-            XSSFWorkbook(input).use { workbook ->
-                val sheet = workbook.getSheet(SHEET_DATA) ?: workbook.createSheet(SHEET_DATA)
-                val row = sheet.createRow(sheet.lastRowNum + 1)
-                row.createCell(0).setCellValue(displayDateFormat.format(Date(reading.timestamp)))
-                row.createCell(1).setCellValue(elapsedMs / 1000.0)
-                row.createCell(2).setCellValue(source)
-                row.createCell(3).setCellValue(reading.voltage)
-                row.createCell(4).setCellValue(reading.current)
-                row.createCell(5).setCellValue(reading.capacity)
-                row.createCell(6).setCellValue(reading.soc)
-                row.createCell(7).setCellValue(reading.temperature)
-                row.createCell(8).setCellValue(reading.power)
-                row.createCell(9).setCellValue(reading.internalResistance)
-
-                FileOutputStream(file).use { workbook.write(it) }
-            }
+        BufferedWriter(FileWriter(file, true)).use { writer ->
+            writer.appendLine(
+                csvLine(
+                    displayDateFormat.format(Date(reading.timestamp)),
+                    String.format(Locale.US, "%.1f", elapsedMs / 1000.0),
+                    source,
+                    String.format(Locale.US, "%.3f", reading.voltage),
+                    String.format(Locale.US, "%.3f", reading.current),
+                    String.format(Locale.US, "%.3f", reading.capacity),
+                    String.format(Locale.US, "%.1f", reading.soc),
+                    String.format(Locale.US, "%.2f", reading.temperature),
+                    String.format(Locale.US, "%.2f", reading.power),
+                    String.format(Locale.US, "%.3f", reading.internalResistance)
+                )
+            )
         }
     }
 
@@ -176,5 +148,12 @@ object TestExportManager {
             .replace("\\s+".toRegex(), "")
             .replace("[^A-Za-z0-9_-]".toRegex(), "")
             .ifBlank { "Unknown" }
+    }
+
+    private fun csvLine(vararg values: String): String {
+        return values.joinToString(",") { value ->
+            val escaped = value.replace("\"", "\"\"")
+            "\"$escaped\""
+        }
     }
 }

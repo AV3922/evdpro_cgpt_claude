@@ -80,8 +80,6 @@ dependencies {
     implementation(libs.poi.ooxml)
     implementation(libs.android.mail)
     implementation(libs.android.activation)
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.messaging)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -10,7 +10,6 @@ import android.os.PowerManager
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
@@ -24,10 +23,6 @@ import com.batteryok.evdoctor.model.ClientInfo
 import com.batteryok.evdoctor.model.TestSession
 import com.batteryok.evdoctor.ui.dashboard.DashboardActivity
 import com.batteryok.evdoctor.utils.NotificationUtils
-import com.batteryok.evdoctor.utils.TestExportManager
-import com.google.firebase.FirebaseApp
-import com.google.firebase.messaging.FirebaseMessaging
-import com.google.android.material.snackbar.Snackbar
 
 class HomeActivity : AppCompatActivity() {
 
@@ -54,21 +49,6 @@ class HomeActivity : AppCompatActivity() {
 
     private fun ensureBackgroundAndNotificationAccess() {
         NotificationUtils.ensureChannel(this)
-
-        val firebaseReady = runCatching {
-            if (FirebaseApp.getApps(this).isEmpty()) {
-                FirebaseApp.initializeApp(this)
-            }
-            FirebaseApp.getApps(this).isNotEmpty()
-        }.getOrDefault(false)
-
-        if (firebaseReady) {
-            FirebaseMessaging.getInstance().token
-                .addOnSuccessListener { token -> Log.d("EVDoctorFCM", "Token: $token") }
-                .addOnFailureListener { Log.w("EVDoctorFCM", "Unable to fetch token", it) }
-        } else {
-            Log.w("EVDoctorFCM", "Firebase not configured; skipping FCM token init")
-        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
             ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
@@ -285,7 +265,7 @@ class HomeActivity : AppCompatActivity() {
         val session = draftSession.copy(exportFilePath = exportFile.absolutePath)
 
         val intent = Intent(this, DashboardActivity::class.java)
-        intent.putExtra(EXTRA_SESSION, session)
+        intent.putExtra(EXTRA_SESSION, draftSession)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }

@@ -94,6 +94,8 @@ class DashboardActivity : AppCompatActivity() {
         session = intent.getSerializableExtra(HomeActivity.EXTRA_SESSION) as? TestSession
             ?: TestSession()
 
+        initializeSessionExportFile()
+
         setupToolbar()
         setupCharts()
         setupBluetoothSheet()
@@ -102,6 +104,18 @@ class DashboardActivity : AppCompatActivity() {
         binding.liveIndicator.visibility = View.GONE
         binding.btnStopTest.text = getString(R.string.finish_test)
         NotificationUtils.ensureChannel(this)
+    }
+
+    private fun initializeSessionExportFile() {
+        if (session.exportFilePath.isNotBlank()) return
+
+        runCatching {
+            TestExportManager.createSessionWorkbook(this, session)
+        }.onSuccess { exportFile ->
+            session = session.copy(exportFilePath = exportFile.absolutePath)
+        }.onFailure {
+            Toast.makeText(this, "Unable to create test data file", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun setupToolbar() {
@@ -549,11 +563,11 @@ class DashboardActivity : AppCompatActivity() {
                 TestExportManager.sendWorkbookBySmtp(session, session.exportFilePath)
             }.onSuccess {
                 runOnUiThread {
-                    Toast.makeText(this, "Test Excel sent via email", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Test data file sent via email", Toast.LENGTH_LONG).show()
                 }
             }.onFailure {
                 runOnUiThread {
-                    Toast.makeText(this, "Failed to email test Excel", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Failed to email test data file", Toast.LENGTH_LONG).show()
                 }
             }
         }
