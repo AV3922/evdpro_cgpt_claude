@@ -255,6 +255,15 @@ class HomeActivity : AppCompatActivity() {
             startTime = startTime
         )
 
+        val exportFile = runCatching {
+            TestExportManager.createSessionWorkbook(this, draftSession)
+        }.getOrElse {
+            Snackbar.make(binding.root, "Unable to create Excel file", Snackbar.LENGTH_LONG).show()
+            return
+        }
+
+        val session = draftSession.copy(exportFilePath = exportFile.absolutePath)
+
         val intent = Intent(this, DashboardActivity::class.java)
         intent.putExtra(EXTRA_SESSION, draftSession)
         startActivity(intent)
