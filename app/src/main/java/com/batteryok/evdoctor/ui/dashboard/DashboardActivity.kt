@@ -10,7 +10,12 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import android.provider.Settings
+import android.media.AudioManager
+import android.media.ToneGenerator
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -29,6 +34,7 @@ import com.batteryok.evdoctor.ui.home.HomeActivity
 import com.batteryok.evdoctor.ui.report.ReportActivity
 import com.batteryok.evdoctor.utils.BatterySimulator
 import com.batteryok.evdoctor.utils.BluetoothUtils
+import com.batteryok.evdoctor.utils.NotificationUtils
 import com.batteryok.evdoctor.utils.TestExportManager
 import com.batteryok.evdoctor.utils.ThemeUtils
 import com.github.mikephil.charting.charts.LineChart
@@ -68,6 +74,9 @@ class DashboardActivity : AppCompatActivity() {
     private val exportExecutor = Executors.newSingleThreadExecutor()
 
     private val maxDataPoints = 30
+    private val flashModeDurationMs = 15 * 60 * 1000L
+    private val isFlashMode: Boolean by lazy { session.testMode.equals("FLASH", ignoreCase = true) }
+    private var isFlashFinishUnlocked = false
 
     companion object {
         const val EXTRA_REPORT = "extra_report"
@@ -92,6 +101,7 @@ class DashboardActivity : AppCompatActivity() {
         binding.btnPauseResume.text = "START"
         binding.liveIndicator.visibility = View.GONE
         binding.btnStopTest.text = getString(R.string.finish_test)
+        NotificationUtils.ensureChannel(this)
     }
 
     private fun setupToolbar() {
@@ -253,7 +263,13 @@ class DashboardActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnStopTest.setOnClickListener { stopTest() }
+        binding.btnStopTest.setOnClickListener {
+            if (isFlashMode && !isFlashFinishUnlocked) {
+                Toast.makeText(this, getString(R.string.flash_mode_wait_finish), Toast.LENGTH_SHORT).show()
+            } else {
+                stopTest()
+            }
+        }
     }
 
     private fun showPopupMenu() {
@@ -296,6 +312,16 @@ class DashboardActivity : AppCompatActivity() {
         startTimer()
         startBluetoothReader()
 
+        if (isFlashMode) {
+            isFlashFinishUnlocked = false
+            binding.btnStopTest.isEnabled = false
+            binding.btnStopTest.alpha = 0.5f
+        } else {
+            isFlashFinishUnlocked = true
+            binding.btnStopTest.isEnabled = true
+            binding.btnStopTest.alpha = 1f
+        }
+
         if (!commandSent) {
             startFallbackDataFeed()
         } else {
@@ -334,6 +360,7 @@ class DashboardActivity : AppCompatActivity() {
                         elapsedTime = System.currentTimeMillis() - startTime
                     }
                     binding.tvTimer.text = ThemeUtils.formatTime(elapsedTime)
+                    evaluateFlashModeCompletion(elapsedTime)
                     handler.postDelayed(this, TIMER_INTERVAL_MS)
                 }
             }
@@ -358,6 +385,7 @@ class DashboardActivity : AppCompatActivity() {
                 readings.add(reading)
                 updateUI(reading, secs)
                 appendReadingToWorkbook(reading, elapsedTime, "simulator")
+                evaluateFlashModeCompletion(elapsedTime)
 
                 handler.postDelayed(this, 1000)
             }
@@ -422,6 +450,53 @@ class DashboardActivity : AppCompatActivity() {
             binding.tvTimer.text = String.format("%02d : %02d : %02d", hour, min, sec)
         }
         appendReadingToWorkbook(reading, elapsedTime, "bluetooth")
+        evaluateFlashModeCompletion(elapsedTime)
+    }
+
+    private fun evaluateFlashModeCompletion(currentElapsedMs: Long) {
+        if (!isFlashMode || isFlashFinishUnlocked || currentElapsedMs < flashModeDurationMs) return
+
+        isFlashFinishUnlocked = true
+        runOnUiThread {
+            binding.btnStopTest.isEnabled = true
+            binding.btnStopTest.alpha = 1f
+            triggerFlashFinishAlert()
+        }
+    }
+
+    private fun triggerFlashFinishAlert() {
+        runCatching {
+            val toneGenerator = ToneGenerator(AudioManager.STREAM_ALARM, 100)
+            toneGenerator.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 1200)
+        }
+
+        runCatching {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val vibratorManager = getSystemService(VibratorManager::class.java)
+                vibratorManager?.defaultVibrator?.let { vibrate(it) }
+            } else {
+                @Suppress("DEPRECATION")
+                val vibrator = getSystemService(VIBRATOR_SERVICE) as? Vibrator
+                vibrator?.let { vibrate(it) }
+            }
+        }
+
+        NotificationUtils.showNotification(
+            this,
+            getString(R.string.flash_mode_finish_ready_title),
+            getString(R.string.flash_mode_finish_ready_body)
+        )
+    }
+
+    private fun vibrate(vibrator: Vibrator) {
+        if (!vibrator.hasVibrator()) return
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(VibrationEffect.createOneShot(1200, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            @Suppress("DEPRECATION")
+            vibrator.vibrate(1200)
+        }
     }
 
     private fun updateUI(reading: BatteryReading, elapsedSeconds: Float) {

@@ -592,9 +592,10 @@
 
                     <!-- Duration tag -->
                     <TextView
+                        android:id="@+id/tvFlashDurationTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="~5 min"
+                        android:text="15 min"
                         android:fontFamily="@font/inter_semibold"
                         android:textSize="10sp"
                         android:textColor="@color/white"
@@ -669,9 +670,10 @@
                         android:layout_marginTop="4dp" />
 
                     <TextView
+                        android:id="@+id/tvNormalDurationTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="~20 min"
+                        android:text="--"
                         android:fontFamily="@font/inter_semibold"
                         android:textSize="10sp"
                         android:textColor="@color/white"

@@ -20,6 +20,7 @@ navigationUi = "2.7.7"
 coroutines = "1.8.1"
 poi = "5.2.5"
 androidMail = "1.6.7"
+firebaseBom = "33.5.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,6 +43,8 @@ kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 poi-ooxml = { group = "org.apache.poi", name = "poi-ooxml", version.ref = "poi" }
 android-mail = { group = "com.sun.mail", name = "android-mail", version.ref = "androidMail" }
 android-activation = { group = "com.sun.mail", name = "android-activation", version.ref = "androidMail" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
