@@ -10,6 +10,7 @@ import android.os.PowerManager
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,7 @@ import com.batteryok.evdoctor.model.TestSession
 import com.batteryok.evdoctor.ui.dashboard.DashboardActivity
 import com.batteryok.evdoctor.utils.NotificationUtils
 import com.batteryok.evdoctor.utils.TestExportManager
+import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.android.material.snackbar.Snackbar
 
@@ -53,8 +55,20 @@ class HomeActivity : AppCompatActivity() {
     private fun ensureBackgroundAndNotificationAccess() {
         NotificationUtils.ensureChannel(this)
 
-        FirebaseMessaging.getInstance().token
-            .addOnSuccessListener { token -> android.util.Log.d("EVDoctorFCM", "Token: $token") }
+        val firebaseReady = runCatching {
+            if (FirebaseApp.getApps(this).isEmpty()) {
+                FirebaseApp.initializeApp(this)
+            }
+            FirebaseApp.getApps(this).isNotEmpty()
+        }.getOrDefault(false)
+
+        if (firebaseReady) {
+            FirebaseMessaging.getInstance().token
+                .addOnSuccessListener { token -> Log.d("EVDoctorFCM", "Token: $token") }
+                .addOnFailureListener { Log.w("EVDoctorFCM", "Unable to fetch token", it) }
+        } else {
+            Log.w("EVDoctorFCM", "Firebase not configured; skipping FCM token init")
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
             ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
