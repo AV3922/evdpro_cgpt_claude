@@ -45,6 +45,7 @@ object TestExportManager {
             writer.appendLine(csvLine("Session", "Battery Voltage", session.batteryInfo.nominalVoltage.toString()))
             writer.appendLine(csvLine("Session", "Battery Capacity", session.batteryInfo.nominalCapacity.toString()))
             writer.appendLine(csvLine("Session", "Test Mode", session.testMode))
+            writer.appendLine(csvLine("Session", "Device MAX ID", session.deviceMaxId.ifBlank { "Unknown" }))
             writer.appendLine(csvLine("Session", "Session Started At", displayDateFormat.format(Date(session.startTime))))
             writer.appendLine()
             writer.appendLine(
@@ -116,8 +117,17 @@ object TestExportManager {
 
         if (recipients.isEmpty()) return
 
-        val subject = "EV Doctor Test - ${session.clientInfo.name.ifBlank { "Client" }}"
-        val textBody = "Test data attached for ${session.clientInfo.name.ifBlank { "Client" }}."
+        val durationMin = ((System.currentTimeMillis() - session.startTime) / 60000L).coerceAtLeast(0)
+        val subject = "EV Doctor Report – Device MAX ID: ${session.deviceMaxId.ifBlank { "Unknown" }}"
+        val textBody = buildString {
+            appendLine("Device MAX ID: ${session.deviceMaxId.ifBlank { "Unknown" }}")
+            appendLine("Battery ID: ${session.batteryInfo.model.ifBlank { "Unknown" }}")
+            appendLine("Test Type: ${session.testMode}")
+            appendLine("Test Duration: ${durationMin} minutes")
+            appendLine("Test Date: ${displayDateFormat.format(Date())}")
+            appendLine()
+            append("CSV report is attached.")
+        }
 
         val message = MimeMessage(mailSession).apply {
             setFrom(InternetAddress(BuildConfig.SMTP_USER, BuildConfig.SMTP_SENDER_NAME))

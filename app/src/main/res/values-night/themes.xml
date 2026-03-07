@@ -15,6 +15,9 @@
         <item name="colorOnSurface">@color/dark_text_primary</item>
         <item name="android:colorBackground">@color/dark_background</item>
         <item name="colorOnBackground">@color/dark_text_primary</item>
+        <item name="android:textColorPrimary">@color/dark_text_primary</item>
+        <item name="android:textColorSecondary">@color/dark_text_secondary</item>
+        <item name="android:textColorHint">@color/dark_text_secondary</item>
         <item name="android:statusBarColor">@color/dark_background</item>
         <item name="android:navigationBarColor">@color/dark_background</item>
         <item name="android:windowLightStatusBar">false</item>

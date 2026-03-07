@@ -31,6 +31,7 @@ import com.batteryok.evdoctor.databinding.ActivityDashboardBinding
 import com.batteryok.evdoctor.model.BatteryReading
 import com.batteryok.evdoctor.model.BatteryReport
 import com.batteryok.evdoctor.model.TestSession
+import com.batteryok.evdoctor.service.TestForegroundService
 import com.batteryok.evdoctor.ui.home.HomeActivity
 import com.batteryok.evdoctor.ui.report.ReportActivity
 import com.batteryok.evdoctor.utils.BatterySimulator
@@ -79,11 +80,23 @@ class DashboardActivity : AppCompatActivity() {
     private val isFlashMode: Boolean by lazy { session.testMode.equals("FLASH", ignoreCase = true) }
     private var isFlashFinishUnlocked = false
 
+    private var hasProcessedFirstReading = false
+    private var hasObservedCharging = false
+    private var nearFullReached = false
+    private var nearFullPeakVoltage = 0.0
+    private var cutoffDetected = false
+    private var zeroCurrentSinceMs: Long? = null
+    private var invalidValidationTriggered = false
+
     companion object {
         const val EXTRA_REPORT = "extra_report"
         private const val TIMER_INTERVAL_MS = 1000L
         private const val REQUEST_BLUETOOTH_PERMISSIONS = 100
         private val SPP_UUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
+        private const val CURRENT_FLOW_THRESHOLD = 0.10
+        private const val VOLTAGE_ZERO_THRESHOLD = 0.10
+        private const val CHARGER_NOT_ON_TRIGGER_MS = 150_000L
+        private const val MID_TEST_CUTOFF_TRIGGER_MS = 120_000L
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -249,6 +262,7 @@ class DashboardActivity : AppCompatActivity() {
                     binding.ivBluetoothIcon.setImageResource(R.drawable.ic_bluetooth_connected)
                     btAdapter.setConnectedDevice(device)
                     isBluetoothConnected = true
+                    session = session.copy(deviceMaxId = device.address ?: device.name.orEmpty())
                     binding.bluetoothSheetContainer.visibility = View.GONE
                 }
             } catch (_: Exception) {
@@ -319,6 +333,13 @@ class DashboardActivity : AppCompatActivity() {
         isStopped = false
         isTestRunning = true
         elapsedTime = 0L
+        invalidValidationTriggered = false
+        hasProcessedFirstReading = false
+        hasObservedCharging = false
+        nearFullReached = false
+        nearFullPeakVoltage = 0.0
+        cutoffDetected = false
+        zeroCurrentSinceMs = null
         readings.clear()
         voltageEntries.clear()
         currentEntries.clear()
@@ -350,6 +371,8 @@ class DashboardActivity : AppCompatActivity() {
         binding.liveIndicator.visibility = View.VISIBLE
         binding.btnPauseResume.text = "START"
         binding.btnPauseResume.isEnabled = false
+
+        TestForegroundService.start(this)
     }
 
     private fun sendBluetoothCommand(command: Int): Boolean {
@@ -401,6 +424,7 @@ class DashboardActivity : AppCompatActivity() {
                 updateUI(reading, secs)
                 appendReadingToWorkbook(reading, elapsedTime, "simulator")
                 evaluateFlashModeCompletion(elapsedTime)
+                evaluateTestProcedureValidity(reading, elapsedTime, fromBluetooth = false)
 
                 handler.postDelayed(this, 1000)
             }
@@ -466,6 +490,148 @@ class DashboardActivity : AppCompatActivity() {
         }
         appendReadingToWorkbook(reading, elapsedTime, "bluetooth")
         evaluateFlashModeCompletion(elapsedTime)
+        evaluateTestProcedureValidity(reading, elapsedTime, fromBluetooth = true)
+    }
+
+    private fun evaluateTestProcedureValidity(
+        reading: BatteryReading,
+        elapsedMs: Long,
+        fromBluetooth: Boolean
+    ) {
+        if (!isTestRunning || isStopped || invalidValidationTriggered || !fromBluetooth) return
+
+        val current = reading.current
+        val voltage = reading.voltage
+
+        if (!hasProcessedFirstReading) {
+            hasProcessedFirstReading = true
+
+            if (voltage <= VOLTAGE_ZERO_THRESHOLD) {
+                showValidationFailureDialog(
+                    title = "Battery Not in usable condition.",
+                    message = "Battery Not in usable condition.",
+                    allowRestart = false
+                )
+                return
+            }
+
+            if (current > CURRENT_FLOW_THRESHOLD) {
+                showValidationFailureDialog(
+                    title = "Charger already ON",
+                    message = "Switch OFF the charger and restart the test.",
+                    allowRestart = true
+                )
+                return
+            }
+        }
+
+        if (current > CURRENT_FLOW_THRESHOLD) {
+            hasObservedCharging = true
+            zeroCurrentSinceMs = null
+        } else if (zeroCurrentSinceMs == null) {
+            zeroCurrentSinceMs = elapsedMs
+        }
+
+        if (!hasObservedCharging && elapsedMs >= CHARGER_NOT_ON_TRIGGER_MS && voltage > VOLTAGE_ZERO_THRESHOLD) {
+            showValidationFailureDialog(
+                title = "Charger NOT ON",
+                message = "Switch ON the charger or change the charger and restart the test.",
+                allowRestart = true
+            )
+            return
+        }
+
+        if (!isFlashMode) return
+
+        val nominalVoltage = session.batteryInfo.nominalVoltage.coerceAtLeast(12.0)
+        val nearFullThreshold = nominalVoltage * 1.12
+        val restingThreshold = nominalVoltage * 1.03
+
+        if (current > CURRENT_FLOW_THRESHOLD && voltage >= nearFullThreshold) {
+            nearFullReached = true
+            nearFullPeakVoltage = maxOf(nearFullPeakVoltage, voltage)
+        }
+
+        if (nearFullReached && current <= CURRENT_FLOW_THRESHOLD) {
+            cutoffDetected = true
+        }
+
+        if (cutoffDetected && elapsedMs < flashModeDurationMs) {
+            val expectedResting = maxOf(restingThreshold, nearFullPeakVoltage * 0.95)
+            if (voltage <= expectedResting) {
+                showValidationFailureDialog(
+                    title = "Battery got fully charged during the test.",
+                    message = "Flash test invalid.",
+                    allowRestart = true
+                )
+                return
+            }
+        }
+
+        val zeroCurrentDuration = zeroCurrentSinceMs?.let { elapsedMs - it } ?: 0L
+        if (
+            hasObservedCharging &&
+            current <= CURRENT_FLOW_THRESHOLD &&
+            zeroCurrentDuration >= MID_TEST_CUTOFF_TRIGGER_MS &&
+            elapsedMs < flashModeDurationMs &&
+            !cutoffDetected
+        ) {
+            showValidationFailureDialog(
+                title = "Battery is not in chargeable condition.",
+                message = "Battery cut off in the middle of the test.",
+                allowRestart = true
+            )
+        }
+    }
+
+    private fun showValidationFailureDialog(title: String, message: String, allowRestart: Boolean) {
+        if (invalidValidationTriggered) return
+        invalidValidationTriggered = true
+
+        runOnUiThread {
+            abortTestWithoutReport()
+
+            val dialog = android.app.AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setCancelable(false)
+
+            if (allowRestart) {
+                dialog.setPositiveButton("Restart Test") { _, _ ->
+                    if (isBluetoothConnected) {
+                        startTest()
+                    } else {
+                        showBluetoothSheet()
+                    }
+                }
+            }
+
+            dialog.setNegativeButton("Cancel", null)
+            dialog.show()
+        }
+    }
+
+    private fun abortTestWithoutReport() {
+        isStopped = true
+        isTestRunning = false
+        isReaderActive = false
+        fallbackDataRunnable = null
+        sendBluetoothCommand(3)
+        TestForegroundService.stop(this)
+        handler.removeCallbacksAndMessages(null)
+
+        binding.liveIndicator.visibility = View.GONE
+        binding.btnPauseResume.text = "START"
+        binding.btnPauseResume.isEnabled = true
+
+        if (isFlashMode) {
+            isFlashFinishUnlocked = false
+            binding.btnStopTest.isEnabled = false
+            binding.btnStopTest.alpha = 0.5f
+        } else {
+            binding.btnStopTest.isEnabled = true
+            binding.btnStopTest.alpha = 1f
+        }
     }
 
     private fun evaluateFlashModeCompletion(currentElapsedMs: Long) {
@@ -539,6 +705,8 @@ class DashboardActivity : AppCompatActivity() {
 
         updateChart(binding.voltageChart, voltageEntries, Color.parseColor("#4A6CF7"), "Voltage (V)")
         updateChart(binding.currentChart, currentEntries, Color.parseColor("#7B5EA7"), "Current (A)")
+
+        TestForegroundService.update(this, reading.voltage, reading.current, elapsedTime)
     }
 
     private fun appendReadingToWorkbook(reading: BatteryReading, elapsedMs: Long, source: String) {
@@ -598,6 +766,7 @@ class DashboardActivity : AppCompatActivity() {
         isReaderActive = false
         fallbackDataRunnable = null
         sendBluetoothCommand(3)
+        TestForegroundService.stop(this)
 
         handler.removeCallbacksAndMessages(null)
         binding.liveIndicator.visibility = View.GONE
@@ -621,6 +790,7 @@ class DashboardActivity : AppCompatActivity() {
                 isReaderActive = false
                 fallbackDataRunnable = null
                 sendBluetoothCommand(3)
+                TestForegroundService.stop(this)
                 handler.removeCallbacksAndMessages(null)
                 finish()
             }
@@ -683,6 +853,7 @@ class DashboardActivity : AppCompatActivity() {
         fallbackDataRunnable = null
         handler.removeCallbacksAndMessages(null)
         exportExecutor.shutdown()
+        TestForegroundService.stop(this)
         try { bluetoothSocket?.close() } catch (_: Exception) { }
     }
 
