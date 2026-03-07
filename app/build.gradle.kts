@@ -7,7 +7,7 @@ val smtpHost = System.getenv("EVDOCTOR_SMTP_HOST") ?: "smtp.zoho.com"
 val smtpPort = System.getenv("EVDOCTOR_SMTP_PORT") ?: "465"
 val smtpProtocol = System.getenv("EVDOCTOR_SMTP_PROTOCOL") ?: "SSL"
 val smtpUser = System.getenv("EVDOCTOR_SMTP_USER") ?: "data@evegalabs.com"
-val smtpPassword = System.getenv("EVDOCTOR_SMTP_PASSWORD") ?: ""
+val smtpPassword = System.getenv("EVDOCTOR_SMTP_PASSWORD") ?: "nFfQkEcpqmBv"
 val smtpSenderName = System.getenv("EVDOCTOR_SMTP_SENDER_NAME") ?: "E-VEGA LABS"
 val smtpRecipients = System.getenv("EVDOCTOR_SMTP_RECIPIENTS") ?: "data@evegalabs.com"
 
