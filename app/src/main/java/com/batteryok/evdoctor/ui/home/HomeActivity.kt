@@ -248,7 +248,7 @@ class HomeActivity : AppCompatActivity() {
         )
 
         val startTime = System.currentTimeMillis()
-        val session = TestSession(
+        val draftSession = TestSession(
             clientInfo = clientInfo,
             batteryInfo = batteryInfo,
             testMode = selectedMode ?: "NORMAL",
