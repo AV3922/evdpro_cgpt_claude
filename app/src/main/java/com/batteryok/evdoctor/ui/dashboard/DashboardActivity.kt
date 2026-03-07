@@ -16,6 +16,7 @@ import android.os.VibratorManager
 import android.provider.Settings
 import android.media.AudioManager
 import android.media.ToneGenerator
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -549,26 +550,44 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
-    private fun sendWorkbookByEmail() {
-        if (session.exportFilePath.isBlank()) return
-        if (!TestExportManager.hasSmtpConfig()) {
-            runOnUiThread {
-                Toast.makeText(this, "SMTP config missing. Email skipped.", Toast.LENGTH_LONG).show()
-            }
-            return
-        }
+    private fun finalizeExportAndNavigate(report: BatteryReport) {
+        binding.btnPauseResume.isEnabled = false
+        binding.btnStopTest.isEnabled = false
 
         exportExecutor.execute {
-            runCatching {
-                TestExportManager.sendWorkbookBySmtp(session, session.exportFilePath)
-            }.onSuccess {
-                runOnUiThread {
-                    Toast.makeText(this, "Test data file sent via email", Toast.LENGTH_LONG).show()
+            var finalMessage: String? = null
+
+            if (session.exportFilePath.isBlank()) {
+                runCatching { TestExportManager.createSessionWorkbook(this, session) }
+                    .onSuccess { exportFile ->
+                        session = session.copy(exportFilePath = exportFile.absolutePath)
+                        Log.d("EVDoctorExport", "Created export file at stop: ${exportFile.absolutePath}")
+                    }
+                    .onFailure {
+                        Log.e("EVDoctorExport", "Unable to create test data file", it)
+                        finalMessage = "Unable to create test data file"
+                    }
+            }
+
+            if (session.exportFilePath.isNotBlank() && TestExportManager.hasSmtpConfig()) {
+                runCatching {
+                    TestExportManager.sendWorkbookBySmtp(session, session.exportFilePath)
+                }.onSuccess {
+                    Log.d("EVDoctorExport", "Test data email sent during finalization")
+                    finalMessage = "Test data file sent via email"
+                }.onFailure {
+                    Log.e("EVDoctorExport", "Finalization email failed", it)
+                    finalMessage = "Failed to email test data file: ${it.message ?: "Unknown error"}"
                 }
-            }.onFailure {
-                runOnUiThread {
-                    Toast.makeText(this, "Failed to email test data file", Toast.LENGTH_LONG).show()
+            } else if (session.exportFilePath.isNotBlank()) {
+                finalMessage = "SMTP config missing. File saved locally."
+            }
+
+            runOnUiThread {
+                finalMessage?.let {
+                    Toast.makeText(this, it, Toast.LENGTH_LONG).show()
                 }
+                navigateToReport(report)
             }
         }
     }
@@ -579,7 +598,6 @@ class DashboardActivity : AppCompatActivity() {
         isReaderActive = false
         fallbackDataRunnable = null
         sendBluetoothCommand(3)
-        sendWorkbookByEmail()
 
         handler.removeCallbacksAndMessages(null)
         binding.liveIndicator.visibility = View.GONE
@@ -590,7 +608,7 @@ class DashboardActivity : AppCompatActivity() {
             durationMs = elapsedTime
         )
 
-        navigateToReport(report)
+        finalizeExportAndNavigate(report)
     }
 
     private fun confirmExit() {
@@ -664,7 +682,7 @@ class DashboardActivity : AppCompatActivity() {
         isReaderActive = false
         fallbackDataRunnable = null
         handler.removeCallbacksAndMessages(null)
-        exportExecutor.shutdownNow()
+        exportExecutor.shutdown()
         try { bluetoothSocket?.close() } catch (_: Exception) { }
     }
 
