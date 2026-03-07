@@ -152,35 +152,7 @@
                             android:id="@+id/etClientName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/hint_client_name"
                             android:inputType="textPersonName|textCapWords"
-                            android:fontFamily="@font/inter_regular"
-                            android:textSize="15sp"
-                            android:imeOptions="actionNext" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Client ID -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilClientId"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/client_id"
-                        android:layout_marginTop="12dp"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        app:boxStrokeColor="@color/input_stroke_selector"
-                        app:hintTextColor="@color/brand_blue">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etClientId"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/hint_client_id"
-                            android:inputType="text"
                             android:fontFamily="@font/inter_regular"
                             android:textSize="15sp"
                             android:imeOptions="actionNext" />
@@ -192,16 +164,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="12dp">
+                        android:layout_marginTop="12dp"
+                        android:visibility="visible">
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilPhone"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:hint="@string/client_phone"
-                            android:layout_marginEnd="6dp"
                             app:boxCornerRadiusTopStart="12dp"
                             app:boxCornerRadiusTopEnd="12dp"
                             app:boxCornerRadiusBottomStart="12dp"
@@ -213,7 +184,6 @@
                                 android:id="@+id/etPhone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/hint_phone"
                                 android:inputType="phone"
                                 android:fontFamily="@font/inter_regular"
                                 android:textSize="14sp"
@@ -223,6 +193,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilEmail"
+                            android:visibility="gone"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -257,9 +228,11 @@
             <!-- ═══════════════════════════════════════════ -->
             <!-- SECTION 2: Vehicle Information             -->
             <!-- ═══════════════════════════════════════════ -->
-            <include layout="@layout/layout_section_header_vehicle" />
+            <include layout="@layout/layout_section_header_vehicle"
+                android:visibility="gone" />
 
             <com.google.android.material.card.MaterialCardView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="16dp"
@@ -278,6 +251,7 @@
                     <!-- Vehicle Model -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tilVehicleModel"
+                        android:visibility="gone"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -306,6 +280,7 @@
                     <!-- Vehicle Number -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tilVehicleNumber"
+                        android:visibility="gone"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -361,7 +336,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/battery_make"
+                        android:hint="Battery Chemistry Type"
                         app:startIconDrawable="@drawable/ic_battery"
                         app:startIconTint="@color/status_good"
                         app:boxCornerRadiusTopStart="12dp"
@@ -387,7 +362,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/battery_model"
+                        android:hint="Battery Serial Number"
                         android:layout_marginTop="12dp"
                         app:boxCornerRadiusTopStart="12dp"
                         app:boxCornerRadiusTopEnd="12dp"
@@ -400,7 +375,6 @@
                             android:id="@+id/etBatteryModel"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/hint_battery_model"
                             android:inputType="text"
                             android:fontFamily="@font/inter_regular"
                             android:textSize="15sp"
@@ -414,7 +388,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/battery_chemistry"
+                        android:hint="Battery Voltage (V)"
                         android:layout_marginTop="12dp"
                         app:boxCornerRadiusTopStart="12dp"
                         app:boxCornerRadiusTopEnd="12dp"
@@ -438,17 +412,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="12dp">
+                        android:layout_marginTop="12dp"
+                        android:visibility="visible">
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilCapacity"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:hint="Capacity (Ah)"
-                            android:layout_marginEnd="6dp"
-                            app:suffixText="Ah"
+                            android:hint="Battery Capacity"
                             app:boxCornerRadiusTopStart="12dp"
                             app:boxCornerRadiusTopEnd="12dp"
                             app:boxCornerRadiusBottomStart="12dp"
@@ -460,8 +432,7 @@
                                 android:id="@+id/etCapacity"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/hint_capacity"
-                                android:inputType="numberDecimal"
+                                android:inputType="text"
                                 android:fontFamily="@font/inter_regular"
                                 android:textSize="15sp"
                                 android:imeOptions="actionNext" />
@@ -470,6 +441,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilVoltage"
+                            android:visibility="gone"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -501,6 +473,7 @@
                     <!-- Number of Cells -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tilCells"
+                        android:visibility="gone"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -619,9 +592,10 @@
 
                     <!-- Duration tag -->
                     <TextView
+                        android:id="@+id/tvFlashDurationTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="~5 min"
+                        android:text="15 min"
                         android:fontFamily="@font/inter_semibold"
                         android:textSize="10sp"
                         android:textColor="@color/white"
@@ -696,9 +670,10 @@
                         android:layout_marginTop="4dp" />
 
                     <TextView
+                        android:id="@+id/tvNormalDurationTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="~20 min"
+                        android:text="--"
                         android:fontFamily="@font/inter_semibold"
                         android:textSize="10sp"
                         android:textColor="@color/white"
@@ -718,7 +693,7 @@
                 android:id="@+id/btnStartTest"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height"
-                android:text="@string/start_test"
+                android:text="NEXT"
                 android:textSize="16sp"
                 android:fontFamily="@font/inter_semibold"
                 android:textColor="@color/white"

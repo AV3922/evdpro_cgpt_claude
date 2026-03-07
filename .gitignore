@@ -1,0 +1,7 @@
+# Android/Gradle local and generated files
+.gradle/
+**/build/
+local.properties
+
+# Codex PR system currently rejects binary diffs
+gradle/wrapper/gradle-wrapper.jar
