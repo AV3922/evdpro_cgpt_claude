@@ -258,7 +258,7 @@ class HomeActivity : AppCompatActivity() {
         // Export file creation is intentionally handled in Dashboard initialization.
         // Keeping Home focused on validated session handoff avoids stale compile issues.
         val intent = Intent(this, DashboardActivity::class.java)
-        intent.putExtra(EXTRA_SESSION, session)
+        intent.putExtra(EXTRA_SESSION, draftSession)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
