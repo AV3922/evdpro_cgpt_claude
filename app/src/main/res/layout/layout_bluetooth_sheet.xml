@@ -51,7 +51,7 @@
             android:id="@+id/btnScanBluetooth"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            android:text="Scan"
+            android:text="@string/bluetooth_scan"
             android:textSize="12sp"
             android:fontFamily="@font/inter_semibold"
             android:textColor="@color/white"
