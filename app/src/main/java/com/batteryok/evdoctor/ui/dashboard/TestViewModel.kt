@@ -1,5 +1,6 @@
 package com.batteryok.evdoctor.ui.dashboard
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,6 +24,7 @@ class TestViewModel : ViewModel() {
 
     private var sheet2Path: String? = null
     private var initialized = false
+    private var workbookSupported = true
 
     private val _latestSample = MutableLiveData<BatterySample>()
     val latestSample: LiveData<BatterySample> = _latestSample
@@ -47,7 +49,7 @@ class TestViewModel : ViewModel() {
             val chemistry = session.batteryInfo.chemistry.ifBlank { session.batteryInfo.make }
             val cutoff = cutoffRepository.getCutoff(chemistry, session.batteryInfo.nominalVoltage)
             socCalculator = SocCalculator.fromSession(session, cutoff?.lower, cutoff?.upper)
-            ensureSheet2Workbook()
+            ensureSheet2WorkbookSafely()
         }
     }
 
@@ -64,17 +66,38 @@ class TestViewModel : ViewModel() {
             val chemistry = session.batteryInfo.chemistry.ifBlank { session.batteryInfo.make }
             val cutoff = cutoffRepository.getCutoff(chemistry, session.batteryInfo.nominalVoltage)
             socCalculator = SocCalculator.fromSession(session, cutoff?.lower, cutoff?.upper)
-            ensureSheet2Workbook()
+            ensureSheet2WorkbookSafely()
         }
 
         val sample = socCalculator!!.calculate(voltage, current, capacity, hour, minute, second)
         _latestSample.postValue(sample)
 
         viewModelScope.launch(Dispatchers.IO) {
-            appendSheet2Row(sample)
+            appendSheet2RowSafely(sample)
         }
 
         return sample
+    }
+
+
+    private fun ensureSheet2WorkbookSafely() {
+        if (!workbookSupported) return
+        runCatching {
+            ensureSheet2Workbook()
+        }.onFailure {
+            workbookSupported = false
+            Log.e("EVDoctorSoc", "Disabling Sheet2 workbook export due to runtime error", it)
+        }
+    }
+
+    private fun appendSheet2RowSafely(sample: BatterySample) {
+        if (!workbookSupported) return
+        runCatching {
+            appendSheet2Row(sample)
+        }.onFailure {
+            workbookSupported = false
+            Log.e("EVDoctorSoc", "Disabling Sheet2 workbook row append due to runtime error", it)
+        }
     }
 
     private fun ensureSheet2Workbook() {
@@ -125,7 +148,7 @@ class TestViewModel : ViewModel() {
         synchronized(workbookLock) {
             val file = File(path)
             if (!file.exists()) {
-                ensureSheet2Workbook()
+                ensureSheet2WorkbookSafely()
             }
 
             FileInputStream(file).use { input ->
