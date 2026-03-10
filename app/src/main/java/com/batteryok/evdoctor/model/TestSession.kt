@@ -7,5 +7,6 @@ data class TestSession(
     val batteryInfo: BatteryInfo = BatteryInfo(),
     val testMode: String = "NORMAL",
     val startTime: Long = System.currentTimeMillis(),
-    val exportFilePath: String = ""
+    val exportFilePath: String = "",
+    val deviceMaxId: String = ""
 ) : Serializable
