@@ -54,7 +54,7 @@ class ReportActivity : AppCompatActivity() {
         setupToolbar()
         populateReport()
         setupClickListeners()
-        binding.scrollView.post {
+        binding.reportScrollView.post {
             saveReportScreenshotToGallery(showToast = false)
         }
     }
@@ -348,7 +348,7 @@ class ReportActivity : AppCompatActivity() {
         val page = pdf.startPage(pageInfo)
         val canvas = page.canvas
 
-        val bitmap = captureViewBitmap(binding.scrollView)
+        val bitmap = captureViewBitmap(binding.reportScrollView)
         val scaled = Bitmap.createScaledBitmap(bitmap, 1080, (bitmap.height * (1080f / bitmap.width)).toInt(), true)
         canvas.drawBitmap(scaled, 0f, 0f, null)
         pdf.finishPage(page)
@@ -362,7 +362,7 @@ class ReportActivity : AppCompatActivity() {
     }
 
     private fun saveReportScreenshotToGallery(showToast: Boolean) {
-        val bitmap = captureViewBitmap(binding.scrollView)
+        val bitmap = captureViewBitmap(binding.reportScrollView)
         val fileName = "EVDoctor_Report_${SimpleDateFormat("yyyyMMdd_HHmm", Locale.US).format(Date())}.png"
 
         val contentValues = android.content.ContentValues().apply {
@@ -384,7 +384,7 @@ class ReportActivity : AppCompatActivity() {
     }
 
     private fun saveShareableScreenshotInCache(): Uri? {
-        val bitmap = captureViewBitmap(binding.scrollView)
+        val bitmap = captureViewBitmap(binding.reportScrollView)
         val cacheDir = File(cacheDir, "shared_reports")
         if (!cacheDir.exists()) cacheDir.mkdirs()
 
